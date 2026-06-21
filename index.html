@@ -29,12 +29,18 @@
     border-bottom: 1px solid var(--border);
   }
   .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-logo-img { display: none; }
+  .nav-logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
   .nav-logo-text {
     font-family: 'Playfair Display', serif;
     font-size: 15px; font-weight: 900;
     color: var(--charcoal); line-height: 1.15;
     letter-spacing: -0.3px;
+    white-space: nowrap;
   }
   .nav-logo-divider { display: none; }
   .nav-logo-sub { display: none; }
@@ -56,7 +62,12 @@
   }
   .hero-bg {
     position: absolute; inset: 0;
-    background: url('https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=1600&q=85') center/cover no-repeat;
+    overflow: hidden;
+  }
+  .hero-bg video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .hero-overlay {
     position: absolute; inset: 0;
@@ -362,7 +373,8 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <span class="nav-logo-text">Mission 1<br>Ummah</span>
+    <img src="https://i.imgur.com/jmEujuY.png" alt="M1U Logo" class="nav-logo-img">
+    <span class="nav-logo-text">Mission 1 Ummah</span>
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -375,15 +387,19 @@
 
 <!-- HERO — Gates full photo style -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <video autoplay muted loop playsinline>
+      <source src="https://videos.pexels.com/video-files/37940493/16099419_2560_1440_24fps.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <span class="hero-eyebrow">Mission 1 Ummah</span>
-    <h1>Every Muslim deserves a<br><em>community they can count on.</em></h1>
-    <p class="hero-sub">M1U empowers Muslim entrepreneurs and communities through faith-driven commerce, collaboration, and collective strength.</p>
+    <h1>One Ummah.<br><em>One Mission.</em><br>Infinite Impact.</h1>
+    <p class="hero-sub">M1U Foundation unites individuals, organizations, businesses, and community leaders around a shared mission — to give, serve, and create lasting impact.</p>
     <div class="hero-actions">
-      <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="btn-white">Make a Donation</a>
-      <a href="#about" class="btn-outline-white">Learn More</a>
+      <a href="#involved" class="btn-white">Become a Partner</a>
+      <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="btn-outline-white">Support the Mission</a>
     </div>
   </div>
 </section>
@@ -408,31 +424,46 @@
 <div class="believe">
   <div class="believe-inner">
     <span class="believe-label">Our Mission</span>
-    <h2>"We believe in the <strong>dignity and potential</strong> of every Muslim — and that a united community is the most powerful force for <strong>lasting change.</strong>"</h2>
+    <h2>"The Ummah is strongest when we work together — not as separate organizations, but as <strong>one community united around a shared purpose.</strong>"</h2>
   </div>
 </div>
 
 <!-- FOCUS AREAS — Ford grid -->
 <section class="section focus" id="about">
   <div class="container">
-    <span class="eyebrow">Who We Are</span>
-    <h2 class="sec-title">What We Stand For</h2>
-    <p class="sec-sub">Three pillars guide everything we do at M1U.</p>
+    <span class="eyebrow">Our Approach</span>
+    <h2 class="sec-title">We Don't Compete.<br>We Connect.</h2>
+    <p class="sec-sub">M1U serves as a bridge between people, mosques, nonprofits, and businesses — creating partnerships that multiply impact instead of dividing it.</p>
     <div class="focus-grid">
       <div class="focus-item">
-        <span class="focus-icon">🤝</span>
-        <h3>Community First</h3>
-        <p>Every initiative starts with the needs of our Ummah — no exceptions. We build from the ground up, led by the people we serve.</p>
+        <span class="focus-icon">🍽️</span>
+        <h3>Feeding the Hungry</h3>
+        <p>Providing meals and food assistance while creating opportunities for compassion, service, and community involvement.</p>
       </div>
       <div class="focus-item">
         <span class="focus-icon">📿</span>
-        <h3>Faith-Driven Ethics</h3>
-        <p>All decisions are guided by Islamic values and principles. Our commerce and collaboration are rooted in what Allah loves.</p>
+        <h3>Supporting Our Imams</h3>
+        <p>Strengthening the leaders who guide our communities through education, collaboration, resources, and long-term support.</p>
       </div>
       <div class="focus-item">
-        <span class="focus-icon">🌱</span>
-        <h3>Sustainable Impact</h3>
-        <p>We build systems that create lasting change — not just for today's generation, but for the generations that follow.</p>
+        <span class="focus-icon">🤝</span>
+        <h3>Community Support</h3>
+        <p>Helping individuals, families, and local communities through partnerships, volunteerism, and programs that strengthen the Ummah.</p>
+      </div>
+      <div class="focus-item">
+        <span class="focus-icon">💡</span>
+        <h3>Innovation</h3>
+        <p>Using technology and strategic partnerships to connect communities, simplify giving, and maximize impact.</p>
+      </div>
+      <div class="focus-item">
+        <span class="focus-icon">🕌</span>
+        <h3>Mosque Partnerships</h3>
+        <p>Working directly with masjids across the country to serve their congregations and amplify their community impact.</p>
+      </div>
+      <div class="focus-item">
+        <span class="focus-icon">🌍</span>
+        <h3>Global Reach</h3>
+        <p>Building a connected Muslim community where every individual and organization can create lasting impact locally and globally.</p>
       </div>
     </div>
   </div>
@@ -542,12 +573,12 @@
 <!-- GET INVOLVED -->
 <section class="section get-involved" id="involved">
   <div class="container">
-    <span class="eyebrow">Take Action</span>
-    <h2 class="sec-title">Join the Mission</h2>
+    <span class="eyebrow">Get Involved</span>
+    <h2 class="sec-title">There's a Place for You<br>in This Movement</h2>
     <div class="inv-grid">
-      <div class="inv-card"><span class="inv-icon">💰</span><h3>Donate</h3><p>Your contribution directly funds programs that uplift lives in our community.</p><a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="inv-link">Give Now</a></div>
-      <div class="inv-card"><span class="inv-icon">🙌</span><h3>Volunteer</h3><p>Give your time to programs like Food4Thought and community events.</p><a href="https://m1u.org/?page_id=235" class="inv-link">Get in Touch</a></div>
-      <div class="inv-card"><span class="inv-icon">📢</span><h3>Spread the Word</h3><p>Share M1U and Minar360 with your network to grow our reach.</p><a href="https://www.instagram.com/m1u_mission1ummah/" class="inv-link">Follow Us</a></div>
+      <div class="inv-card"><span class="inv-icon">💰</span><h3>Donate</h3><p>Every dollar goes directly to programs serving our Ummah with dignity and compassion.</p><a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="inv-link">Give Now</a></div>
+      <div class="inv-card"><span class="inv-icon">🙌</span><h3>Volunteer</h3><p>Ready to serve? Join our network of volunteers making a difference on the ground.</p><a href="https://m1u.org/?page_id=235" class="inv-link">Get in Touch</a></div>
+      <div class="inv-card"><span class="inv-icon">🤝</span><h3>Become a Partner</h3><p>Whether you're a mosque, nonprofit, or business — real change happens when we work together.</p><a href="https://m1u.org/?page_id=235" class="inv-link">Partner With Us</a></div>
     </div>
   </div>
 </section>
@@ -555,13 +586,16 @@
 <!-- DONATE CTA -->
 <div class="donate-cta">
   <div class="donate-inner">
-    <h2>Give Today.<br><em>Impact Tomorrow.</em></h2>
-    <p>Every dollar goes directly to programs serving our Ummah with dignity, compassion, and care.</p>
+    <h2>One Ummah.<br><em>One Mission.</em></h2>
+    <p>Building stronger communities through faith, service, and collaboration. Together, we can create lasting impact for generations to come.</p>
     <span class="donate-trust">🌙 100% of public donations go directly to our programs</span>
     <br>
-    <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="btn-gold-lg">Make a Donation</a>
+    <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="btn-gold-lg">Donate</a>
+    &nbsp;&nbsp;
+    <a href="https://m1u.org/?page_id=235" class="btn-gold-lg" style="background: transparent; border: 1px solid var(--gold); color: var(--gold);">Partner With Us</a>
   </div>
 </div>
+
 
 <!-- FOOTER -->
 <footer>
