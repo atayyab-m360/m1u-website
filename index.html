@@ -29,13 +29,15 @@
     border-bottom: 1px solid var(--border);
   }
   .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-logo-img {
-    height: 38px;
-    width: auto;
-    object-fit: contain;
+  .nav-logo-img { display: none; }
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 900;
+    color: var(--charcoal); line-height: 1.15;
+    letter-spacing: -0.3px;
   }
-  .nav-logo-divider { width: 1px; height: 18px; background: var(--border); }
-  .nav-logo-sub { font-size: 12px; color: var(--muted); font-weight: 400; }
+  .nav-logo-divider { display: none; }
+  .nav-logo-sub { display: none; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a { font-size: 13px; font-weight: 500; color: var(--text); text-decoration: none; transition: color .2s; }
   .nav-links a:hover { color: var(--gold); }
@@ -54,22 +56,23 @@
   }
   .hero-bg {
     position: absolute; inset: 0;
-    background: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=85') center/cover no-repeat;
+    background: url('https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=1600&q=85') center/cover no-repeat;
   }
   .hero-overlay {
     position: absolute; inset: 0;
     background: linear-gradient(
       to bottom,
-      rgba(0,0,0,0.15) 0%,
-      rgba(0,0,0,0.1) 40%,
-      rgba(0,0,0,0.75) 100%
+      rgba(0,0,0,0.45) 0%,
+      rgba(0,0,0,0.35) 40%,
+      rgba(0,0,0,0.85) 100%
     );
   }
   .hero-content { position: relative; z-index: 1; padding: 0 64px; max-width: 900px; }
   .hero-eyebrow {
-    font-size: 11px; font-weight: 700; letter-spacing: 4px;
+    font-size: 13px; font-weight: 700; letter-spacing: 4px;
     text-transform: uppercase; color: var(--gold);
     display: block; margin-bottom: 20px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
   }
   .hero h1 {
     font-family: 'Playfair Display', serif;
@@ -359,9 +362,7 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="https://i.imgur.com/VVNBY0b.jpeg" alt="Mission 1 Ummah" class="nav-logo-img">
-    <div class="nav-logo-divider"></div>
-    <span class="nav-logo-sub">Mission 1 Ummah</span>
+    <span class="nav-logo-text">Mission 1<br>Ummah</span>
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
