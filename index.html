@@ -59,6 +59,7 @@
     height: 100vh; position: relative;
     display: flex; flex-direction: column; justify-content: flex-end;
     padding: 0 0 72px 0;
+    background: #1a1a1a;
   }
   .hero-bg {
     position: absolute; inset: 0;
@@ -73,12 +74,19 @@
     position: absolute; inset: 0;
     background: linear-gradient(
       to bottom,
-      rgba(0,0,0,0.45) 0%,
-      rgba(0,0,0,0.35) 40%,
-      rgba(0,0,0,0.85) 100%
+      rgba(0,0,0,0.15) 0%,
+      rgba(0,0,0,0.1) 30%,
+      rgba(0,0,0,0.65) 100%
     );
   }
-  .hero-content { position: relative; z-index: 1; padding: 0 64px; max-width: 900px; }
+  .hero-content { position: relative; z-index: 1; padding: 0 48px; max-width: 900px; }
+  .hero-trust {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+    font-style: italic;
+  }
   .hero-eyebrow {
     font-size: 13px; font-weight: 700; letter-spacing: 4px;
     text-transform: uppercase; color: var(--gold);
@@ -97,17 +105,20 @@
     line-height: 1.7; max-width: 520px; margin-bottom: 36px;
   }
   .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
   .btn-white {
     background: var(--white); color: var(--charcoal);
-    padding: 14px 32px; border-radius: 4px;
+    padding: 14px 28px; border-radius: 4px;
     font-size: 14px; font-weight: 700; text-decoration: none; transition: background .2s;
+    white-space: nowrap;
   }
   .btn-white:hover { background: var(--gold); color: var(--charcoal); }
   .btn-outline-white {
-    background: transparent; color: var(--white);
-    padding: 14px 32px; border-radius: 4px;
-    border: 1px solid rgba(255,255,255,0.5);
+    background: transparent; color: rgba(255,255,255,0.85);
+    padding: 14px 28px; border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.4);
     font-size: 14px; font-weight: 500; text-decoration: none; transition: all .2s;
+    white-space: nowrap;
   }
   .btn-outline-white:hover { border-color: var(--gold-light); color: var(--gold-light); }
 
@@ -168,21 +179,33 @@
   }
   .sec-sub { font-size: 16px; color: var(--muted); line-height: 1.8; max-width: 520px; }
 
-  /* FOCUS AREAS — Ford grid */
+  /* FOCUS — charity: water style */
   .focus { background: var(--off-white); }
-  .focus-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1px; background: var(--border);
-    margin-top: 48px; border: 1px solid var(--border);
+  .mission-statement {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(17px, 2vw, 22px);
+    font-style: italic;
+    color: var(--charcoal);
+    line-height: 1.7;
+    border-left: 3px solid var(--gold);
+    padding: 14px 0 14px 24px;
+    margin: 20px auto 20px;
+    max-width: 760px;
+    text-align: left;
   }
-  .focus-item {
-    background: var(--white); padding: 32px 28px;
-    transition: background .2s;
+  .focus-centered { text-align: center; max-width: 720px; margin: 0 auto; }
+  .focus-centered .eyebrow { display: block; }
+  .focus-centered .sec-sub { margin: 0 auto 40px; }
+  .focus-pills { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 8px; }
+  .focus-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--white); border: 1.5px solid var(--border);
+    color: var(--charcoal); font-size: 14px; font-weight: 600;
+    padding: 12px 22px; border-radius: 100px; letter-spacing: 0.2px;
+    transition: all .2s; cursor: default;
   }
-  .focus-item:hover { background: var(--off-white); }
-  .focus-icon { font-size: 28px; margin-bottom: 14px; display: block; }
-  .focus-item h3 { font-size: 16px; font-weight: 700; color: var(--charcoal); margin-bottom: 8px; }
-  .focus-item p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .focus-pill:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); }
+
 
   /* MINAR360 */
   .minar360 { background: var(--white); }
@@ -295,6 +318,20 @@
   .inv-link::after { content: '→'; }
   .inv-link:hover { color: var(--gold); }
 
+  /* HOW WE'RE FUNDED */
+  .how-funded { background: var(--off-white); }
+  .funded-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; margin-top: 48px; align-items: start; }
+  .funded-statement { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
+  .funded-statement strong { color: var(--charcoal); }
+  .funded-quote { font-family: 'Playfair Display', serif; font-size: 18px; font-style: italic; color: var(--charcoal); line-height: 1.65; border-left: 3px solid var(--gold); padding-left: 20px; margin-top: 28px; }
+  .funded-quote em { color: var(--gold); }
+  .funded-breakdown { display: flex; flex-direction: column; gap: 16px; }
+  .funded-item { display: flex; gap: 16px; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+  .funded-icon { font-size: 22px; flex-shrink: 0; width: 44px; height: 44px; background: var(--off-white); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+  .funded-icon.funded-icon-gold { background: rgba(201,168,76,0.12); }
+  .funded-item h4 { font-size: 14px; font-weight: 700; color: var(--charcoal); margin-bottom: 5px; }
+  .funded-item p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
   /* DONATE CTA */
   .donate-cta {
     background: var(--charcoal); padding: 88px 48px; text-align: center; position: relative; overflow: hidden;
@@ -340,14 +377,111 @@
   .f-powered strong { color: var(--gold); }
 
   /* RESPONSIVE */
+  /* IMAM MAP */
+  .imam-map { background: var(--white); padding: 88px 48px; }
+  .map-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; flex-wrap: wrap; gap: 24px; }
+  .map-legend { display: flex; flex-direction: column; gap: 10px; padding-top: 8px; }
+  .legend-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); font-weight: 500; }
+  .legend-dot { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+  .legend-dot.dot-gold { background: var(--gold); }
+  .legend-dot.dot-gray { background: #D8D5CE; }
+  .legend-glow-sample { width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle, #FFD700 0%, #FFA500 40%, transparent 100%); box-shadow: 0 0 8px 3px rgba(255,165,0,0.6); flex-shrink: 0; }
+  .map-layout { display: flex; flex-direction: column; gap: 20px; margin-bottom: 20px; }
+  .state-sidebar { background: var(--off-white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+  .sidebar-search input { width: 100%; padding: 10px 14px; border: none; border-bottom: 1px solid var(--border); background: var(--white); font-size: 13px; font-family: 'Inter', sans-serif; outline: none; color: var(--text); }
+  .state-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); overflow-y: auto; max-height: 220px; }
+  .state-list-item { display: flex; justify-content: space-between; align-items: center; padding: 9px 12px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background .15s; font-size: 12px; }
+  .state-list-item:hover { background: rgba(201,168,76,0.08); }
+  .state-list-item.active { background: rgba(201,168,76,0.12); border-left: 3px solid var(--gold); }
+  .state-list-item.is-confirmed { font-weight: 700; color: var(--charcoal); }
+  .state-list-item.is-soon { color: var(--muted); }
+  .state-count { font-size: 10px; font-weight: 700; background: var(--gold); color: var(--charcoal); padding: 2px 7px; border-radius: 100px; }
+  .state-count.empty { background: var(--border); color: var(--muted); }
+  .map-wrap { position: relative; background: #EEF3F8; border: 1px solid var(--border); border-radius: 12px; padding: 16px; overflow: hidden; }
+  .usa-map { width: 100%; height: auto; }
+  /* State paths */
+  [data-state] { transition: all .15s; cursor: pointer; stroke: white; stroke-width: 0.8; fill: #C8D8E8; }
+  [data-state]:hover { fill: #B8C8D8; opacity: 0.85; }
+  [data-state].confirmed { fill: var(--gold); }
+  [data-state].confirmed:hover { fill: var(--gold-light); }
+  .state-label { font-size: 8px; font-family: 'Inter', sans-serif; font-weight: 700; text-anchor: middle; dominant-baseline: middle; fill: #556; pointer-events: none; }
+  .dc-group circle { transition: all .15s; }
+  .dc-group:hover circle { opacity: 0.8; }
+  /* Glow dots */
+  .glow-outer { animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 0.4; r: 14; } 50% { opacity: 0.7; r: 18; } }
+  .map-tooltip { display: none; position: absolute; background: var(--charcoal); color: var(--white); padding: 10px 14px; border-radius: 8px; font-size: 12px; pointer-events: none; box-shadow: 0 6px 20px rgba(0,0,0,0.2); border-left: 3px solid var(--gold); z-index: 10; white-space: nowrap; line-height: 1.6; }
+  .state-detail { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 22px 26px; margin-bottom: 20px; }
+  .state-detail-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .state-detail-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--charcoal); display: block; }
+  .state-detail-status { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); }
+  .detail-close { background: none; border: 1px solid var(--border); padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; color: var(--muted); transition: all .2s; }
+  .detail-close:hover { background: var(--charcoal); color: var(--white); border-color: var(--charcoal); }
+  .state-detail-body { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+  .masjid-card { background: var(--off-white); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; }
+  .masjid-card-name { font-size: 13px; font-weight: 600; color: var(--charcoal); margin-bottom: 2px; }
+  .masjid-card-city { font-size: 11px; color: var(--muted); }
+  .map-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+  .map-stat { text-align: center; background: var(--off-white); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+  .map-stat-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; display: block; line-height: 1; margin-bottom: 6px; }
+  .map-stat-label { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: 0.5px; }
+
+
+  /* MONTHLY CTA */
+  .monthly-cta { position: relative; background: var(--charcoal); padding: 96px 48px; overflow: hidden; }
+  .monthly-cta-bg-img { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=1400&q=60') center/cover no-repeat; opacity: 0.06; }
+  .monthly-cta-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(30,30,30,0.97) 0%, rgba(30,30,30,0.93) 100%); }
+  .monthly-cta-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
+  .monthly-top-badge { display: inline-flex; align-items: center; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.35); padding: 8px 20px; border-radius: 100px; margin-bottom: 28px; }
+  .monthly-top-badge span { font-size: 13px; font-weight: 700; color: var(--gold); letter-spacing: 0.5px; }
+  .monthly-main-title { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 64px); font-weight: 900; color: var(--white); line-height: 1.08; margin-bottom: 20px; }
+  .monthly-main-title em { font-style: italic; color: var(--gold); }
+  .monthly-main-sub { font-size: 18px; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 720px; margin-bottom: 40px; }
+  .monthly-main-sub strong { color: var(--white); }
+  .monthly-pull-quote { font-family: 'Playfair Display', serif; font-size: 19px; font-style: italic; color: var(--gold-light); line-height: 1.65; border-left: 3px solid var(--gold); padding-left: 24px; margin-bottom: 40px; max-width: 800px; }
+  .monthly-details { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px; }
+  .monthly-detail-item { display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 16px; }
+  .detail-icon { font-size: 20px; flex-shrink: 0; }
+  .monthly-detail-item strong { display: block; font-size: 14px; color: var(--white); font-weight: 700; margin-bottom: 4px; }
+  .monthly-detail-item span { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+  .monthly-give-card { background: var(--white); border-radius: 12px; padding: 36px; }
+  .monthly-give-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+  .monthly-give-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .monthly-raised { font-size: 15px; color: var(--charcoal); }
+  .monthly-raised strong { font-family: 'Playfair Display', serif; font-size: 24px; }
+  .monthly-pct-block { text-align: right; }
+  .monthly-pct { display: block; font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; color: var(--gold); line-height: 1; }
+  .monthly-donors { font-size: 12px; color: var(--muted); }
+  .monthly-progress-bar { background: var(--off-white); border-radius: 100px; height: 10px; overflow: hidden; margin-bottom: 12px; }
+  .monthly-progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 100px; }
+  .monthly-urgency { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+  .monthly-urgency strong { color: var(--charcoal); }
+  .monthly-give-prompt { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .monthly-amounts { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 14px; }
+  .amount-btn { background: var(--off-white); color: var(--charcoal); border: 1.5px solid var(--border); padding: 14px 8px; border-radius: 6px; font-size: 16px; font-weight: 700; text-decoration: none; text-align: center; transition: all .2s; display: block; }
+  .amount-btn:hover { background: var(--charcoal); color: var(--white); border-color: var(--charcoal); }
+  .amount-btn.amount-featured { background: var(--charcoal); color: var(--white); border-color: var(--charcoal); position: relative; }
+  .amount-btn.amount-featured::after { content: 'Popular'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--charcoal); font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
+  .amount-btn-full { display: block; text-align: center; background: var(--gold); color: var(--charcoal); padding: 18px; border-radius: 6px; font-size: 15px; font-weight: 700; text-decoration: none; transition: background .2s; margin-bottom: 14px; letter-spacing: 0.3px; }
+  .amount-btn-full:hover { background: var(--gold-light); }
+  .monthly-trust { font-size: 12px; color: var(--muted); text-align: center; }
+
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links, .nav-logo-divider, .nav-logo-sub { display: none; }
     .hero-content { padding: 0 24px; }
-    .ticker-inner { padding: 12px 20px; }
+    .hero-actions { gap: 10px; }
+    .btn-white, .btn-outline-white { padding: 12px 20px; font-size: 13px; }
+    .ticker-inner { padding: 12px 20px; flex-wrap: wrap; gap: 8px; }
     .believe { padding: 56px 20px; }
     .section { padding: 60px 20px; }
-    .focus-grid { grid-template-columns: 1fr; }
+    .imam-map { padding: 60px 20px; }
+    .map-header { flex-direction: column; gap: 16px; }
+    .map-layout { grid-template-columns: 1fr; }
+    .state-list { grid-template-columns: 1fr 1fr; }
+    .map-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .focus-pills { gap: 8px; }
+    .focus-pill { font-size: 13px; padding: 10px 16px; }
     .minar360-grid { grid-template-columns: 1fr; gap: 36px; }
     .phone-wrap { display: none; }
     .m360-feats { grid-template-columns: 1fr 1fr; }
@@ -356,15 +490,25 @@
     .prog-img, .prog-bar-wrap { display: none; }
     .prog-donate { grid-column: 2; width: 100%; text-align: center; }
     .impact { padding: 56px 20px; }
-    .impact-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .impact-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
     .president-block { grid-template-columns: 1fr; text-align: center; padding: 24px 20px; gap: 20px; }
     .pres-photo { margin: 0 auto; }
     .board-grid { grid-template-columns: 1fr; }
     .inv-grid { grid-template-columns: 1fr; }
+    .monthly-cta { padding: 60px 20px; }
+    .monthly-details { grid-template-columns: 1fr; gap: 12px; }
+    .monthly-amounts { grid-template-columns: repeat(3, 1fr); }
+    .monthly-give-card { padding: 24px 20px; }
+    .monthly-give-top { flex-direction: column; gap: 12px; }
+    .monthly-pct-block { text-align: left; }
+    .funded-grid { grid-template-columns: 1fr; gap: 36px; }
     .donate-cta { padding: 64px 20px; }
     .footer-top { grid-template-columns: 1fr; gap: 32px; }
     footer { padding: 44px 20px 24px; }
     .footer-bottom { flex-direction: column; text-align: center; }
+    .minar360-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .monthly-body { grid-template-columns: 1fr; gap: 32px; }
   }
 </style>
 </head>
@@ -401,6 +545,7 @@
       <a href="#involved" class="btn-white">Become a Partner</a>
       <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="btn-outline-white">Support the Mission</a>
     </div>
+    <p class="hero-trust">Every dollar donated goes directly to the community — zero overhead</p>
   </div>
 </section>
 
@@ -428,44 +573,140 @@
   </div>
 </div>
 
-<!-- FOCUS AREAS — Ford grid -->
+<!-- FOCUS AREAS — charity: water style -->
 <section class="section focus" id="about">
   <div class="container">
-    <span class="eyebrow">Our Approach</span>
-    <h2 class="sec-title">We Don't Compete.<br>We Connect.</h2>
-    <p class="sec-sub">M1U serves as a bridge between people, mosques, nonprofits, and businesses — creating partnerships that multiply impact instead of dividing it.</p>
-    <div class="focus-grid">
-      <div class="focus-item">
-        <span class="focus-icon">🍽️</span>
-        <h3>Feeding the Hungry</h3>
-        <p>Providing meals and food assistance while creating opportunities for compassion, service, and community involvement.</p>
-      </div>
-      <div class="focus-item">
-        <span class="focus-icon">📿</span>
-        <h3>Supporting Our Imams</h3>
-        <p>Strengthening the leaders who guide our communities through education, collaboration, resources, and long-term support.</p>
-      </div>
-      <div class="focus-item">
-        <span class="focus-icon">🤝</span>
-        <h3>Community Support</h3>
-        <p>Helping individuals, families, and local communities through partnerships, volunteerism, and programs that strengthen the Ummah.</p>
-      </div>
-      <div class="focus-item">
-        <span class="focus-icon">💡</span>
-        <h3>Innovation</h3>
-        <p>Using technology and strategic partnerships to connect communities, simplify giving, and maximize impact.</p>
-      </div>
-      <div class="focus-item">
-        <span class="focus-icon">🕌</span>
-        <h3>Mosque Partnerships</h3>
-        <p>Working directly with masjids across the country to serve their congregations and amplify their community impact.</p>
-      </div>
-      <div class="focus-item">
-        <span class="focus-icon">🌍</span>
-        <h3>Global Reach</h3>
-        <p>Building a connected Muslim community where every individual and organization can create lasting impact locally and globally.</p>
+    <div class="focus-centered">
+      <span class="eyebrow">Our Mission</span>
+      <h2 class="sec-title">We Don't Compete.<br>We Connect.</h2>
+      <blockquote class="mission-statement">"To unite the Muslim community through collaboration, service, and innovation — making it easier for people to give, serve, and create lasting impact locally and globally."</blockquote>
+      <p class="sec-sub">M1U serves as a bridge between people, mosques, nonprofits, and businesses — creating partnerships that multiply impact instead of dividing it.</p>
+      <div class="focus-pills">
+        <span class="focus-pill">🍽️ Feeding the Hungry</span>
+        <span class="focus-pill">📿 Supporting Imams</span>
+        <span class="focus-pill">🤝 Community Support</span>
+        <span class="focus-pill">💡 Innovation</span>
+        <span class="focus-pill">🕌 Mosque Partnerships</span>
+        <span class="focus-pill">🌍 Global Reach</span>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- IMAM NETWORK MAP -->
+<section class="section imam-map" id="network">
+  <div class="container">
+    <div class="map-header">
+      <div>
+        <span class="eyebrow">National Imam Network</span>
+        <h2 class="sec-title">Building a Movement,<br>State by State</h2>
+        <p class="sec-sub">Sheikh Abdulhakim Mohamed is designating one State Leader per state — each responsible for growing the M1U &amp; Minar360 Imam network across America.</p>
+      </div>
+      <div class="map-legend">
+        <div class="legend-item"><div class="legend-dot dot-gold"></div><span>State Leader Confirmed</span></div>
+        <div class="legend-item"><div class="legend-dot dot-gray"></div><span>Coming Soon</span></div>
+        <div class="legend-item"><div class="legend-glow-sample"></div><span>Masjid Location</span></div>
+      </div>
+    </div>
+
+    <div class="map-layout">
+      <div class="map-wrap" id="mapWrap">
+        <canvas id="mapCanvas" style="display:none"></canvas>
+        <svg id="usaMap" viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" class="usa-map">
+          <defs>
+            <radialGradient id="dotGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#FFD700" stop-opacity="1"/>
+              <stop offset="45%" stop-color="#FFA500" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#FF6600" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <g id="statesGroup"></g>
+          <g id="masjidDots"></g>
+        </svg>
+        <div class="map-tooltip" id="mapTooltip"></div>
+      </div>
+      <div class="state-sidebar">
+        <div class="sidebar-search">
+          <input type="text" id="stateSearch" placeholder="🔍 Search states..." oninput="filterStates(this.value)">
+        </div>
+        <div class="state-list" id="stateList"></div>
+      </div>
+    </div>
+
+    <div class="state-detail" id="stateDetail" style="display:none;">
+      <div class="state-detail-header">
+        <div>
+          <span class="state-detail-name" id="detailName"></span>
+          <span class="state-detail-status" id="detailStatus"></span>
+        </div>
+        <button onclick="closeDetail()" class="detail-close">✕ Close</button>
+      </div>
+      <div class="state-detail-body" id="detailBody"></div>
+    </div>
+
+    <div class="map-stats">
+      <div class="map-stat"><span class="map-stat-num" style="color:var(--gold)">3</span><span class="map-stat-label">States Active</span></div>
+      <div class="map-stat"><span class="map-stat-num" style="color:var(--gold)">9</span><span class="map-stat-label">Masjids Connected</span></div>
+      <div class="map-stat"><span class="map-stat-num" style="color:var(--gold)">900+</span><span class="map-stat-label">Imams Nationally</span></div>
+      <div class="map-stat"><span class="map-stat-num" style="color:var(--charcoal)">350K+</span><span class="map-stat-label">Imams Globally</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MONTHLY COMMUNITY CTA -->
+<section class="monthly-cta" id="community">
+  <div class="monthly-cta-bg-img"></div>
+  <div class="monthly-cta-overlay"></div>
+  <div class="container monthly-cta-inner">
+
+    <!-- BADGE + TITLE — full width on top -->
+    <div class="monthly-top-badge">
+      <span>🌙 This Month's Community Campaign — June 2026</span>
+    </div>
+    <h2 class="monthly-main-title">They've Been Praying in a Parking Lot<br><em>for Two Years.</em></h2>
+    <p class="monthly-main-sub">In Warrenton, Virginia, a small but faithful Muslim community gathers every Jumu'ah in a parking lot — rain, wind, or shine — because they have nowhere else to go. They don't need much. They need <strong>us.</strong></p>
+
+    <!-- PULL QUOTE — full width -->
+    <div class="monthly-pull-quote">
+      "Every Muslim who has ever stood in a row for Salah knows what it means to belong. Help give that feeling to our brothers and sisters in Warrenton."
+    </div>
+
+    <!-- DETAILS GRID — 4 columns full width -->
+    <div class="monthly-details">
+      <div class="monthly-detail-item"><span class="detail-icon">📍</span><div><strong>Warrenton, Virginia</strong><span>Rural community with no dedicated Islamic facility</span></div></div>
+      <div class="monthly-detail-item"><span class="detail-icon">🎯</span><div><strong>$25,000 Goal</strong><span>To secure and prepare a dedicated prayer space</span></div></div>
+      <div class="monthly-detail-item"><span class="detail-icon">🤲</span><div><strong>Every Dollar Counts</strong><span>If 25,000 Muslims give $1 — this community has a home</span></div></div>
+      <div class="monthly-detail-item"><span class="detail-icon">🔄</span><div><strong>Monthly Initiative</strong><span>A new community in need is featured every month</span></div></div>
+    </div>
+
+    <!-- DONATION CARD — full width -->
+    <div class="monthly-give-card">
+      <div class="monthly-give-top">
+        <div>
+          <div class="monthly-give-label">June 2026 Fund</div>
+          <div class="monthly-raised"><strong>$8,450</strong> raised of $25,000 goal</div>
+        </div>
+        <div class="monthly-pct-block">
+          <span class="monthly-pct">34%</span>
+          <span class="monthly-donors">142 donors</span>
+        </div>
+      </div>
+      <div class="monthly-progress-bar"><div class="monthly-progress-fill" style="width:34%"></div></div>
+      <p class="monthly-urgency">⏳ <strong>21 days left</strong> — help us cross the finish line this month</p>
+      <p class="monthly-give-prompt">Choose your contribution:</p>
+      <div class="monthly-amounts">
+        <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="amount-btn">$1</a>
+        <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="amount-btn">$5</a>
+        <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="amount-btn">$10</a>
+        <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="amount-btn amount-featured">$25</a>
+        <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="amount-btn">$50</a>
+        <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="amount-btn">$100</a>
+      </div>
+      <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="amount-btn-full">Give Any Amount — Every Dollar Builds a Community →</a>
+      <p class="monthly-trust">Every dollar goes directly to the Warrenton community — zero overhead, zero exceptions.</p>
+    </div>
+
   </div>
 </section>
 
@@ -508,7 +749,7 @@
   <div class="container">
     <div class="prog-header">
       <div>
-        <span class="eyebrow">What We Do</span>
+        <span class="eyebrow">Our Founding Pillars</span>
         <h2 class="sec-title">Programs That Change Lives</h2>
       </div>
       <p class="sec-sub" style="max-width:280px; font-size:14px;">100% of your donation goes directly to our programs.</p>
@@ -584,13 +825,59 @@
 </section>
 
 <!-- DONATE CTA -->
-<div class="donate-cta">
+<section class="how-funded section" id="transparency">
+  <div class="container">
+    <span class="eyebrow">Our Commitment to You</span>
+    <h2 class="sec-title">100% of Your Donation<br>Goes to the Cause</h2>
+    <div class="funded-grid">
+      <div class="funded-main">
+        <p class="funded-statement">We made a promise — every dollar you donate goes <strong>directly</strong> to the community we're serving. Not one cent to salaries, rent, or administration.</p>
+        <p class="funded-statement">M1U's operating costs are funded separately through strategic partnerships, sponsorships, and organizational support — so your generosity goes exactly where it's needed, every single time.</p>
+        <div class="funded-quote">
+          "Most nonprofits ask: will you donate?<br>M1U asks a different question:<br><em>Will you help build a stronger Ummah?</em>"
+        </div>
+      </div>
+      <div class="funded-breakdown">
+        <div class="funded-item">
+          <div class="funded-icon funded-icon-gold">💰</div>
+          <div>
+            <h4>Your Donations</h4>
+            <p>100% goes directly to featured community campaigns — prayer spaces, masjid support, and community programs.</p>
+          </div>
+        </div>
+        <div class="funded-item">
+          <div class="funded-icon">🤝</div>
+          <div>
+            <h4>Our Operations</h4>
+            <p>Funded separately through partnerships, sponsors, and organizational contributions — never from public donations.</p>
+          </div>
+        </div>
+        <div class="funded-item">
+          <div class="funded-icon">📊</div>
+          <div>
+            <h4>Full Transparency</h4>
+            <p>Impact reports published monthly. Every dollar is accounted for and reported back to our community.</p>
+          </div>
+        </div>
+        <div class="funded-item">
+          <div class="funded-icon">🔒</div>
+          <div>
+            <h4>Your Trust is Sacred</h4>
+            <p>We treat every donation as an amanah — a trust — and honor it with complete accountability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
   <div class="donate-inner">
     <h2>One Ummah.<br><em>One Mission.</em></h2>
     <p>Building stronger communities through faith, service, and collaboration. Together, we can create lasting impact for generations to come.</p>
-    <span class="donate-trust">🌙 100% of public donations go directly to our programs</span>
+    <span class="donate-trust">Every dollar you give goes directly to the cause — your generosity is an amanah we honor completely</span>
     <br>
-    <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="btn-gold-lg">Donate</a>
+    <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="btn-gold-lg">Donate Now</a>
     &nbsp;&nbsp;
     <a href="https://m1u.org/?page_id=235" class="btn-gold-lg" style="background: transparent; border: 1px solid var(--gold); color: var(--gold);">Partner With Us</a>
   </div>
@@ -633,5 +920,272 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+// ── NETWORK DATA ──
+const networkData = {
+  'Virginia':          { status:'confirmed', leader:'Sheikh Abdulhakim Mohamed', masjids:[
+    {name:'Dar Al-Hijrah Islamic Center', city:'Falls Church, VA',  lat:38.882, lng:-77.171},
+    {name:'ADAMS Center',                 city:'Sterling, VA',       lat:38.983, lng:-77.402},
+    {name:'Islamic Center of Virginia',   city:'Richmond, VA',       lat:37.541, lng:-77.434}
+  ]},
+  'Maryland':          { status:'confirmed', leader:'TBD', masjids:[
+    {name:'Islamic Society of Baltimore', city:'Baltimore, MD',      lat:39.290, lng:-76.612},
+    {name:'Muslim Community Center',      city:'Silver Spring, MD',  lat:39.003, lng:-77.026}
+  ]},
+  'Washington D.C.':   { status:'confirmed', leader:'TBD', masjids:[
+    {name:'Masjid Muhammad',              city:'Washington, DC',     lat:38.918, lng:-77.018},
+    {name:'Islamic Center of Washington', city:'Washington, DC',     lat:38.914, lng:-77.063}
+  ]},
+  'Washington':        { status:'soon',      leader:'TBD', masjids:[
+    {name:'Idris Mosque',                 city:'Seattle, WA',        lat:47.606, lng:-122.332}
+  ]},
+  'Texas':             { status:'soon',      leader:'TBD', masjids:[
+    {name:'Islamic Society of Greater Houston', city:'Houston, TX',  lat:29.760, lng:-95.370}
+  ]}
+};
+
+const confirmedStates = ['Virginia','Maryland','Pennsylvania'];
+const allStateNames = [
+  'Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut',
+  'Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa',
+  'Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan',
+  'Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire',
+  'New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio',
+  'Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota',
+  'Tennessee','Texas','Utah','Vermont','Virginia','Washington','Washington D.C.',
+  'West Virginia','Wisconsin','Wyoming'
+];
+
+const tooltip = document.getElementById('mapTooltip');
+const mapWrap = document.getElementById('mapWrap');
+let projection, path;
+
+// ── DRAW MAP WITH D3 + TOPOJSON ──
+async function initMap() {
+  const us = await d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json');
+  const states = topojson.feature(us, us.objects.states);
+  const stateMesh = topojson.mesh(us, us.objects.states, (a,b) => a !== b);
+
+  // State FIPS to name mapping
+  const fipsToName = {
+    '01':'Alabama','02':'Alaska','04':'Arizona','05':'Arkansas','06':'California',
+    '08':'Colorado','09':'Connecticut','10':'Delaware','11':'Washington D.C.',
+    '12':'Florida','13':'Georgia','15':'Hawaii','16':'Idaho','17':'Illinois',
+    '18':'Indiana','19':'Iowa','20':'Kansas','21':'Kentucky','22':'Louisiana',
+    '23':'Maine','24':'Maryland','25':'Massachusetts','26':'Michigan','27':'Minnesota',
+    '28':'Mississippi','29':'Missouri','30':'Montana','31':'Nebraska','32':'Nevada',
+    '33':'New Hampshire','34':'New Jersey','35':'New Mexico','36':'New York',
+    '37':'North Carolina','38':'North Dakota','39':'Ohio','40':'Oklahoma','41':'Oregon',
+    '42':'Pennsylvania','44':'Rhode Island','45':'South Carolina','46':'South Dakota',
+    '47':'Tennessee','48':'Texas','49':'Utah','50':'Vermont','51':'Virginia',
+    '53':'Washington','54':'West Virginia','55':'Wisconsin','56':'Wyoming'
+  };
+
+  const svg = d3.select('#usaMap');
+  const width = 960, height = 600;
+
+  projection = d3.geoAlbersUsa()
+    .scale(1280)
+    .translate([width/2, height/2]);
+
+  path = d3.geoPath().projection(projection);
+
+  const g = d3.select('#statesGroup');
+
+  // Draw states
+  g.selectAll('path')
+    .data(states.features)
+    .enter()
+    .append('path')
+    .attr('d', path)
+    .attr('data-fips', d => d.id)
+    .attr('data-state', d => fipsToName[String(d.id).padStart(2,'0')] || '')
+    .attr('fill', d => {
+      const name = fipsToName[String(d.id).padStart(2,'0')];
+      const data = networkData[name];
+      if (data && data.status === 'confirmed') return '#C9A84C';
+      return '#B8CCE0';
+    })
+    .attr('stroke', 'white')
+    .attr('stroke-width', 0.7)
+    .style('cursor','pointer')
+    .style('transition','fill 0.2s')
+    .on('mousemove', function(event, d) {
+      const name = fipsToName[String(d.id).padStart(2,'0')] || 'Unknown';
+      const data = networkData[name];
+      const count = data ? data.masjids.length : 0;
+      const status = data && data.status === 'confirmed' ? '✅ Confirmed' : '⏳ Coming Soon';
+      tooltip.innerHTML = `<strong style="color:#C9A84C">${name}</strong><br>${status}${count>0?`<br>🕌 ${count} Masjid${count>1?'s':''}`:''}`;
+      const rect = mapWrap.getBoundingClientRect();
+      tooltip.style.left = (event.clientX - rect.left + 14)+'px';
+      tooltip.style.top  = (event.clientY - rect.top  - 52)+'px';
+      tooltip.style.display = 'block';
+      d3.select(this).attr('fill', data && data.status==='confirmed' ? '#E8C97A' : '#9BBAD0');
+    })
+    .on('mouseleave', function(event, d) {
+      tooltip.style.display = 'none';
+      const name = fipsToName[String(d.id).padStart(2,'0')];
+      const data = networkData[name];
+      d3.select(this).attr('fill', data && data.status==='confirmed' ? '#C9A84C' : '#B8CCE0');
+    })
+    .on('click', function(event, d) {
+      const name = fipsToName[String(d.id).padStart(2,'0')] || '';
+      selectState(name);
+    });
+
+  // State borders
+  g.append('path')
+    .datum(stateMesh)
+    .attr('d', path)
+    .attr('fill','none')
+    .attr('stroke','white')
+    .attr('stroke-width', 0.8);
+
+  // State labels
+  states.features.forEach(d => {
+    const name = fipsToName[String(d.id).padStart(2,'0')];
+    if (!name) return;
+    const centroid = path.centroid(d);
+    if (!centroid || isNaN(centroid[0])) return;
+    const abbr = name.replace('Washington D.C.','DC').replace('Washington','WA')
+      .replace('New York','NY').replace('New Jersey','NJ').replace('New Mexico','NM')
+      .replace('New Hampshire','NH').replace('North Carolina','NC').replace('North Dakota','ND')
+      .replace('South Carolina','SC').replace('South Dakota','SD').replace('West Virginia','WV')
+      .replace('Rhode Island','RI').replace('Connecticut','CT').replace('Massachusetts','MA')
+      .replace('Vermont','VT').replace('Delaware','DE').replace('Maryland','MD')
+      .replace('Virginia','VA').replace('Wyoming','WY').replace('Wisconsin','WI')
+      .replace('Minnesota','MN').replace('Michigan','MI').replace('Mississippi','MS')
+      .replace('Missouri','MO').replace('Montana','MT').replace('Nebraska','NE')
+      .replace('Nevada','NV').replace('Oklahoma','OK').replace('Oregon','OR')
+      .replace('Pennsylvania','PA').replace('Tennessee','TN').replace('Alabama','AL')
+      .replace('Arkansas','AR').replace('Arizona','AZ').replace('California','CA')
+      .replace('Colorado','CO').replace('Florida','FL').replace('Georgia','GA')
+      .replace('Hawaii','HI').replace('Idaho','ID').replace('Illinois','IL')
+      .replace('Indiana','IN').replace('Iowa','IA').replace('Kansas','KS')
+      .replace('Kentucky','KY').replace('Louisiana','LA').replace('Maine','ME')
+      .replace('Alaska','AK').replace('Ohio','OH').replace('Texas','TX')
+      .replace('Utah','UT').replace('Washington','WA');
+
+    g.append('text')
+      .attr('x', centroid[0])
+      .attr('y', centroid[1])
+      .attr('text-anchor','middle')
+      .attr('dominant-baseline','middle')
+      .attr('font-size', ['Rhode Island','Delaware','Connecticut','New Jersey','New Hampshire','Vermont','Maryland','Massachusetts','Washington D.C.'].includes(name) ? '6' : '9')
+      .attr('font-family','Inter,sans-serif')
+      .attr('font-weight','700')
+      .attr('fill', name && networkData[name] && networkData[name].status==='confirmed' ? '#1E1E1E' : '#4A5568')
+      .attr('pointer-events','none')
+      .text(abbr);
+  });
+
+  // Draw glow dots
+  drawGlowDots();
+  buildSidebar();
+}
+
+// ── GLOW DOTS ──
+function drawGlowDots() {
+  const dotsG = d3.select('#masjidDots');
+  dotsG.selectAll('*').remove();
+
+  Object.values(networkData).forEach(stateData => {
+    stateData.masjids.forEach(m => {
+      const coords = projection([m.lng, m.lat]);
+      if (!coords) return;
+      const [x, y] = coords;
+
+      // Outer animated pulse
+      const outer = dotsG.append('circle')
+        .attr('cx', x).attr('cy', y).attr('r', 16)
+        .attr('fill', 'url(#dotGlow)')
+        .attr('opacity', 0.5);
+
+      // Animate
+      function pulse() {
+        outer.transition().duration(1200)
+          .attr('r', 20).attr('opacity', 0.3)
+          .transition().duration(1200)
+          .attr('r', 12).attr('opacity', 0.6)
+          .on('end', pulse);
+      }
+      pulse();
+
+      // Mid
+      dotsG.append('circle')
+        .attr('cx', x).attr('cy', y).attr('r', 7)
+        .attr('fill','#FFA500').attr('opacity', 0.8);
+
+      // Core
+      dotsG.append('circle')
+        .attr('cx', x).attr('cy', y).attr('r', 4)
+        .attr('fill','#FFD700')
+        .attr('stroke','white').attr('stroke-width', 1.2)
+        .style('cursor','pointer')
+        .on('mousemove', (event) => {
+          tooltip.innerHTML = `<strong style="color:#C9A84C">🕌 ${m.name}</strong><br>${m.city}`;
+          const rect = mapWrap.getBoundingClientRect();
+          tooltip.style.left = (event.clientX - rect.left + 14)+'px';
+          tooltip.style.top  = (event.clientY - rect.top  - 48)+'px';
+          tooltip.style.display = 'block';
+        })
+        .on('mouseleave', () => tooltip.style.display = 'none');
+    });
+  });
+}
+
+// ── SIDEBAR ──
+function buildSidebar(filter = '') {
+  const list = document.getElementById('stateList');
+  list.innerHTML = '';
+  const sorted = [...allStateNames].sort((a,b) => {
+    const aC = networkData[a]?.status === 'confirmed';
+    const bC = networkData[b]?.status === 'confirmed';
+    if (aC && !bC) return -1; if (!aC && bC) return 1;
+    return a.localeCompare(b);
+  });
+  sorted.filter(s => s.toLowerCase().includes(filter.toLowerCase())).forEach(state => {
+    const data = networkData[state];
+    const count = data ? data.masjids.length : 0;
+    const isConf = data?.status === 'confirmed';
+    const item = document.createElement('div');
+    item.className = `state-list-item ${isConf ? 'is-confirmed' : 'is-soon'}`;
+    item.dataset.state = state;
+    item.innerHTML = `<span>${state}</span><span class="state-count ${count===0?'empty':''}">${count>0?count:'—'}</span>`;
+    item.addEventListener('click', () => selectState(state));
+    list.appendChild(item);
+  });
+}
+
+function filterStates(val) { buildSidebar(val); }
+
+// ── SELECT STATE ──
+function selectState(name) {
+  document.querySelectorAll('.state-list-item').forEach(i => i.classList.remove('active'));
+  const item = document.querySelector(`.state-list-item[data-state="${name}"]`);
+  if (item) { item.classList.add('active'); item.scrollIntoView({block:'nearest'}); }
+  showDetail(name, networkData[name]);
+}
+
+function showDetail(name, data) {
+  document.getElementById('detailName').textContent = name;
+  document.getElementById('detailStatus').textContent = data?.status === 'confirmed' ? 'State Leader Confirmed ✅' : 'Coming Soon';
+  const body = document.getElementById('detailBody');
+  body.innerHTML = data?.masjids?.length > 0
+    ? data.masjids.map(m => `<div class="masjid-card"><div class="masjid-card-name">🕌 ${m.name}</div><div class="masjid-card-city">${m.city}</div></div>`).join('')
+    : '<p style="color:#7A7672;font-size:14px;">No masjids added yet. Check back as the network grows.</p>';
+  document.getElementById('stateDetail').style.display = 'block';
+}
+
+function closeDetail() {
+  document.getElementById('stateDetail').style.display = 'none';
+  document.querySelectorAll('.state-list-item').forEach(i => i.classList.remove('active'));
+}
+
+initMap();
+</script>
 </body>
+
 </html>
