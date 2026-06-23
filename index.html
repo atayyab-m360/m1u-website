@@ -80,12 +80,80 @@
     );
   }
   .hero-content { position: relative; z-index: 1; padding: 0 48px; max-width: 900px; }
-  .hero-trust {
+  .hero-trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 14px 20px;
+    max-width: 480px;
+  }
+  .hero-trust-pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .hero-trust-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.45;
+    font-weight: 500;
+  }
+  .card-trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-top: 4px;
+  }
+  .card-trust-pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--gold);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .card-trust-text {
     font-size: 12px;
-    color: rgba(255,255,255,0.55);
-    margin-top: 20px;
-    letter-spacing: 0.5px;
-    font-style: italic;
+    color: var(--muted);
+    line-height: 1.45;
+    font-weight: 500;
+  }
+  .donate-trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 8px;
+    padding: 14px 22px;
+    margin-bottom: 32px;
+    max-width: 540px;
+  }
+  .donate-trust-pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .donate-trust-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.45;
+    font-weight: 500;
+    text-align: left;
   }
   .hero-eyebrow {
     font-size: 13px; font-weight: 700; letter-spacing: 4px;
@@ -533,7 +601,7 @@
 <section class="hero">
   <div class="hero-bg">
     <video autoplay muted loop playsinline>
-      <source src="https://videos.pexels.com/video-files/37940493/16099419_2560_1440_24fps.mp4" type="video/mp4">
+      <source src="https://videos.pexels.com/video-files/31281542/13358269_2560_1440_60fps.mp4" type="video/mp4">
     </video>
   </div>
   <div class="hero-overlay"></div>
@@ -545,7 +613,10 @@
       <a href="#involved" class="btn-white">Become a Partner</a>
       <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="btn-outline-white">Support the Mission</a>
     </div>
-    <p class="hero-trust">Every dollar donated goes directly to the community — zero overhead</p>
+    <div class="hero-trust-badge">
+      <span class="hero-trust-pct">100%</span>
+      <span class="hero-trust-text">of every donation goes directly to the cause</span>
+    </div>
   </div>
 </section>
 
@@ -704,7 +775,10 @@
         <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="amount-btn">$100</a>
       </div>
       <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="amount-btn-full">Give Any Amount — Every Dollar Builds a Community →</a>
-      <p class="monthly-trust">Every dollar goes directly to the Warrenton community — zero overhead, zero exceptions.</p>
+      <div class="card-trust-badge">
+        <span class="card-trust-pct">100%</span>
+        <span class="card-trust-text">of this donation funds the Warrenton community directly</span>
+      </div>
     </div>
 
   </div>
@@ -875,7 +949,10 @@
   <div class="donate-inner">
     <h2>One Ummah.<br><em>One Mission.</em></h2>
     <p>Building stronger communities through faith, service, and collaboration. Together, we can create lasting impact for generations to come.</p>
-    <span class="donate-trust">Every dollar you give goes directly to the cause — your generosity is an amanah we honor completely</span>
+    <div class="donate-trust-badge">
+      <span class="donate-trust-pct">100%</span>
+      <span class="donate-trust-text">of every donation goes directly to the cause — your generosity is an amanah we honor completely</span>
+    </div>
     <br>
     <a href="https://buy.stripe.com/14k9CP9Cd5BQb6wcMM" class="btn-gold-lg">Donate Now</a>
     &nbsp;&nbsp;
