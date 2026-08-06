@@ -9,6 +9,9 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
+    /* Minar360 brand accent — used only inside the app mockup.
+       Replace this one value with Minar360's exact hex to match the real app. */
+    --m360: #3E9BE9;
     --charcoal: #1E1E1E;
     --gold: #C9A84C;
     --gold-light: #E8C97A;
@@ -306,28 +309,28 @@
   .ph-status-icons { display: flex; gap: 4px; align-items: center; font-size: 8px; }
   .ph-body { padding: 6px 12px 0; }
   .ph-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; padding: 0 3px; }
-  .ph-brand { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 900; color: var(--gold); line-height: 1; }
+  .ph-brand { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 900; color: var(--m360); line-height: 1; }
   .ph-loc { font-size: 8.5px; color: rgba(255,255,255,0.4); margin-top: 3px; }
   .ph-avatar {
     width: 24px; height: 24px; border-radius: 50%;
-    background: rgba(201,168,76,0.18); border: 1px solid rgba(201,168,76,0.3);
+    background: rgba(62,155,233,0.18); border: 1px solid rgba(62,155,233,0.32);
     display: flex; align-items: center; justify-content: center; font-size: 10px;
   }
   .ph-prayer {
-    background: linear-gradient(135deg, rgba(201,168,76,0.22), rgba(201,168,76,0.07));
-    border: 1px solid rgba(201,168,76,0.28); border-radius: 12px;
+    background: linear-gradient(135deg, rgba(62,155,233,0.22), rgba(62,155,233,0.07));
+    border: 1px solid rgba(62,155,233,0.30); border-radius: 12px;
     padding: 12px 14px; margin-bottom: 12px;
   }
   .ph-prayer-top { display: flex; justify-content: space-between; align-items: baseline; }
   .ph-prayer-label { font-size: 8px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.45); }
   .ph-prayer-name { font-size: 15px; font-weight: 700; color: var(--white); margin-top: 3px; }
-  .ph-prayer-time { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: var(--gold); line-height: 1; }
+  .ph-prayer-time { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: var(--m360); line-height: 1; }
   .ph-prayer-in { font-size: 8.5px; color: rgba(255,255,255,0.4); text-align: right; margin-top: 3px; }
   .ph-prayer-row { display: flex; justify-content: space-between; margin-top: 11px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08); }
   .ph-pt { text-align: center; }
   .ph-pt span { display: block; font-size: 7.5px; color: rgba(255,255,255,0.35); letter-spacing: 0.3px; }
   .ph-pt strong { display: block; font-size: 9px; color: rgba(255,255,255,0.75); font-weight: 600; margin-top: 2px; }
-  .ph-pt.is-next span, .ph-pt.is-next strong { color: var(--gold); }
+  .ph-pt.is-next span, .ph-pt.is-next strong { color: var(--m360); }
   .ph-quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 14px; }
   .ph-q {
     background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06);
@@ -340,19 +343,19 @@
     margin-bottom: 7px; padding: 0 3px;
   }
   .ph-sec h5 { font-size: 9.5px; font-weight: 700; color: var(--white); letter-spacing: 0.2px; }
-  .ph-sec a { font-size: 8px; color: var(--gold); text-decoration: none; }
+  .ph-sec a { font-size: 8px; color: var(--m360); text-decoration: none; }
   .ph-feed { display: flex; flex-direction: column; gap: 6px; }
   .ph-card { display: flex; align-items: center; gap: 9px; background: rgba(255,255,255,0.05); border-radius: 10px; padding: 8px 9px; }
   .ph-card-ico {
     width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0;
-    background: rgba(201,168,76,0.13); display: flex; align-items: center; justify-content: center; font-size: 13px;
+    background: rgba(62,155,233,0.14); display: flex; align-items: center; justify-content: center; font-size: 13px;
   }
   .ph-card-body { min-width: 0; flex-grow: 1; }
   .ph-card-title { font-size: 9px; font-weight: 600; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .ph-card-sub { font-size: 8px; color: rgba(255,255,255,0.38); margin-top: 2px; }
   .ph-pill {
     font-size: 6.5px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
-    color: var(--gold); background: rgba(201,168,76,0.14); border-radius: 100px;
+    color: var(--m360); background: rgba(62,155,233,0.15); border-radius: 100px;
     padding: 2px 6px; flex-shrink: 0;
   }
   .ph-tabs {
@@ -364,7 +367,7 @@
   .ph-tab-ico { font-size: 12px; display: block; opacity: 0.4; }
   .ph-tab span { font-size: 6.5px; color: rgba(255,255,255,0.3); display: block; margin-top: 2px; }
   .ph-tab.is-on .ph-tab-ico { opacity: 1; }
-  .ph-tab.is-on span { color: var(--gold); }
+  .ph-tab.is-on span { color: var(--m360); }
   .ph-bar { width: 90px; height: 3px; background: rgba(255,255,255,0.25); border-radius: 100px; margin: 0 auto 8px; }
 
   /* PROGRAMS */
