@@ -479,7 +479,7 @@
   .masjid-card { background: var(--off-white); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; }
   .masjid-card-name { font-size: 13px; font-weight: 600; color: var(--charcoal); margin-bottom: 2px; }
   .masjid-card-city { font-size: 11px; color: var(--muted); }
-  .map-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+  .map-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
   .map-stat { text-align: center; background: var(--off-white); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
   .map-stat-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; display: block; line-height: 1; margin-bottom: 6px; }
   .map-stat-label { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: 0.5px; }
@@ -717,15 +717,13 @@
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
-    <span class="ticker-label">At a Glance</span>
+    <span class="ticker-label">Our Work</span>
     <div class="ticker-items">
-      <span class="ticker-item">3 Core Programs</span>
+      <span class="ticker-item">Receive those coming to Islam</span>
       <div class="ticker-dot"></div>
-      <span class="ticker-item">3 States Active</span>
+      <span class="ticker-item">Serve those living it</span>
       <div class="ticker-dot"></div>
-      <span class="ticker-item">9 Masjids Connected</span>
-      <div class="ticker-dot"></div>
-      <span class="ticker-item">1 United Ummah</span>
+      <span class="ticker-item">Endure beyond those who built it</span>
     </div>
   </div>
 </div>
@@ -927,12 +925,12 @@
       <div>
         <span class="eyebrow">National Imam Network</span>
         <h2 class="sec-title">Building a Movement,<br>State by State</h2>
-        <p class="sec-sub">Dr. Abdulhakim Mohamed is designating one State Leader per state — each responsible for growing the M1U &amp; Minar360 Imam network across America.</p>
+        <p class="sec-sub">M1U is building a national network of imams, one region at a time. We are starting in the DMV — Maryland, D.C., and Virginia — and growing from there.</p>
       </div>
       <div class="map-legend">
-        <div class="legend-item"><div class="legend-dot dot-gold"></div><span>State Leader Confirmed</span></div>
+        <div class="legend-item"><div class="legend-dot dot-gold"></div><span>Active Region</span></div>
         <div class="legend-item"><div class="legend-dot dot-gray"></div><span>Coming Soon</span></div>
-        <div class="legend-item"><div class="legend-glow-sample"></div><span>Masjid Location</span></div>
+        <div class="legend-item"><div class="legend-glow-sample"></div><span>Where We're Working</span></div>
       </div>
     </div>
 
@@ -971,10 +969,9 @@
     </div>
 
     <div class="map-stats">
-      <div class="map-stat"><span class="map-stat-num" style="color:var(--gold)">3</span><span class="map-stat-label">States Active</span></div>
-      <div class="map-stat"><span class="map-stat-num" style="color:var(--gold)">9</span><span class="map-stat-label">Masjids Connected</span></div>
+      <div class="map-stat"><span class="map-stat-num" style="color:var(--gold)">3</span><span class="map-stat-label">Active Regions</span></div>
       <div class="map-stat"><span class="map-stat-num" style="color:var(--gold)">900+</span><span class="map-stat-label">Imams Nationally</span></div>
-      <div class="map-stat"><span class="map-stat-num" style="color:var(--charcoal)">350K+</span><span class="map-stat-label">Imams Globally</span></div>
+      <div class="map-stat"><span class="map-stat-num" style="color:var(--charcoal)">3</span><span class="map-stat-label">Core Programs</span></div>
     </div>
   </div>
 </section>
@@ -1313,24 +1310,14 @@
 <script>
 // ── NETWORK DATA ──
 const networkData = {
-  'Virginia':          { status:'confirmed', leader:'Sheikh Abdulhakim Mohamed', masjids:[
-    {name:'Dar Al-Hijrah Islamic Center', city:'Falls Church, VA',  lat:38.882, lng:-77.171},
-    {name:'ADAMS Center',                 city:'Sterling, VA',       lat:38.983, lng:-77.402},
-    {name:'Islamic Center of Virginia',   city:'Richmond, VA',       lat:37.541, lng:-77.434}
+  'Virginia':        { status:'confirmed', leader:'Dr. Abdulhakim Mohamed', masjids:[
+    {name:'Northern Virginia', city:'Virginia', lat:38.882, lng:-77.171}
   ]},
-  'Maryland':          { status:'confirmed', leader:'TBD', masjids:[
-    {name:'Islamic Society of Baltimore', city:'Baltimore, MD',      lat:39.290, lng:-76.612},
-    {name:'Muslim Community Center',      city:'Silver Spring, MD',  lat:39.003, lng:-77.026}
+  'Maryland':        { status:'confirmed', leader:'TBD', masjids:[
+    {name:'Maryland', city:'Maryland', lat:39.100, lng:-76.850}
   ]},
-  'Washington D.C.':   { status:'confirmed', leader:'TBD', masjids:[
-    {name:'Masjid Muhammad',              city:'Washington, DC',     lat:38.918, lng:-77.018},
-    {name:'Islamic Center of Washington', city:'Washington, DC',     lat:38.914, lng:-77.063}
-  ]},
-  'Washington':        { status:'soon',      leader:'TBD', masjids:[
-    {name:'Idris Mosque',                 city:'Seattle, WA',        lat:47.606, lng:-122.332}
-  ]},
-  'Texas':             { status:'soon',      leader:'TBD', masjids:[
-    {name:'Islamic Society of Greater Houston', city:'Houston, TX',  lat:29.760, lng:-95.370}
+  'Washington D.C.': { status:'confirmed', leader:'TBD', masjids:[
+    {name:'Washington, D.C.', city:'District of Columbia', lat:38.907, lng:-77.036}
   ]}
 };
 
@@ -1408,8 +1395,8 @@ async function initMap() {
       const name = fipsToName[String(d.id).padStart(2,'0')] || 'Unknown';
       const data = networkData[name];
       const count = data ? data.masjids.length : 0;
-      const status = data && data.status === 'confirmed' ? '✅ Confirmed' : '⏳ Coming Soon';
-      tooltip.innerHTML = `<strong style="color:#C9A84C">${name}</strong><br>${status}${count>0?`<br>🕌 ${count} Masjid${count>1?'s':''}`:''}`;
+      const status = data && data.status === 'confirmed' ? '✅ Active Region' : '⏳ Coming Soon';
+      tooltip.innerHTML = `<strong style="color:#C9A84C">${name}</strong><br>${status}`;
       const rect = mapWrap.getBoundingClientRect();
       tooltip.style.left = (event.clientX - rect.left + 14)+'px';
       tooltip.style.top  = (event.clientY - rect.top  - 52)+'px';
@@ -1494,7 +1481,7 @@ function drawGlowDots() {
         .attr('stroke','white').attr('stroke-width', 1.2)
         .style('cursor','pointer')
         .on('mousemove', (event) => {
-          tooltip.innerHTML = `<strong style="color:#C9A84C">🕌 ${m.name}</strong><br>${m.city}`;
+          tooltip.innerHTML = `<strong style="color:#C9A84C">📍 ${m.name}</strong>`;
           const rect = mapWrap.getBoundingClientRect();
           tooltip.style.left = (event.clientX - rect.left + 14)+'px';
           tooltip.style.top  = (event.clientY - rect.top  - 48)+'px';
@@ -1538,11 +1525,11 @@ function selectState(name) {
 
 function showDetail(name, data) {
   document.getElementById('detailName').textContent = name;
-  document.getElementById('detailStatus').textContent = data?.status === 'confirmed' ? 'State Leader Confirmed ✅' : 'Coming Soon';
+  document.getElementById('detailStatus').textContent = data?.status === 'confirmed' ? 'Active Region' : 'Coming Soon';
   const body = document.getElementById('detailBody');
   body.innerHTML = data?.masjids?.length > 0
-    ? data.masjids.map(m => `<div class="masjid-card"><div class="masjid-card-name">🕌 ${m.name}</div><div class="masjid-card-city">${m.city}</div></div>`).join('')
-    : '<p style="color:#7A7672;font-size:14px;">No masjids added yet. Check back as the network grows.</p>';
+    ? data.masjids.map(m => `<div class="masjid-card"><div class="masjid-card-name">📍 ${m.name}</div><div class="masjid-card-city">${m.city}</div></div>`).join('')
+    : '<p style="color:#7A7672;font-size:14px;">Not yet active in this state. Check back as the network grows.</p>';
   document.getElementById('stateDetail').style.display = 'block';
 }
 
