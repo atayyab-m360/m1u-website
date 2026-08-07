@@ -132,6 +132,36 @@
     line-height: 1.4; font-style: italic;
   }
   .believe h2 strong { font-weight: 900; font-style: normal; color: var(--gold); }
+  .believe-cite {
+    font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); display: block; margin-top: 22px;
+  }
+  .believe-conviction {
+    margin-top: 34px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .believe-conviction span {
+    font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); display: block; margin-bottom: 12px;
+  }
+  .believe-conviction p {
+    font-size: clamp(17px, 2vw, 21px); color: rgba(255,255,255,0.8);
+    line-height: 1.65; font-weight: 300;
+  }
+  .vision-line {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4.2vw, 52px); font-weight: 700;
+    color: var(--charcoal); line-height: 1.2; margin-bottom: 26px;
+  }
+  .vision-line em { font-style: italic; color: var(--gold); }
+  .vision-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); display: block; margin-bottom: 14px;
+  }
+  .waqf-note {
+    font-size: 13.5px; color: var(--muted); line-height: 1.7;
+    max-width: 640px; margin: 18px auto 0; font-style: normal;
+  }
+  .waqf-note strong { color: var(--charcoal); font-weight: 600; }
 
   /* SHARED */
   .section { padding: 88px 48px; }
@@ -662,7 +692,7 @@
     <li><a href="#network">Network</a></li>
     <li><a href="#people">Our People</a></li>
   </ul>
-  <a href="https://m1u.org/?page_id=235" class="nav-contact">Contact Us</a>
+  <a href="mailto:abdul@m1u.org" class="nav-contact">Contact Us</a>
 </nav>
 
 <!-- HERO -->
@@ -703,8 +733,13 @@
 <!-- WE BELIEVE -->
 <div class="believe">
   <div class="believe-inner">
-    <span class="believe-label">Our Mission</span>
-    <h2>"The Ummah is strongest when we work together — not as separate organizations, but as <strong>one community united around a shared purpose.</strong>"</h2>
+    <span class="believe-label">Our Foundation</span>
+    <h2>"The believers, in their mutual mercy and compassion, are like one body — <strong>when one limb suffers, the whole body responds.</strong>"</h2>
+    <span class="believe-cite">Prophet Muhammad ﷺ · Bukhari &amp; Muslim</span>
+    <div class="believe-conviction">
+      <span>Our Conviction</span>
+      <p>The strength of one is the strength of all, and the weakness of one is the weakness of all.</p>
+    </div>
   </div>
 </div>
 
@@ -712,10 +747,12 @@
 <section class="section focus" id="about">
   <div class="container">
     <div class="focus-centered">
-      <span class="eyebrow">Who We Are</span>
-      <h2 class="sec-title">We Don't Compete.<br>We Connect.</h2>
-      <blockquote class="mission-statement">"To unite the Muslim community through collaboration, service, and innovation — making it easier for people to give, serve, and create lasting impact locally and globally."</blockquote>
-      <p class="sec-sub">M1U Foundation Inc. is a 501(c)(3) nonprofit serving as a bridge between people, mosques, nonprofits, and businesses — creating partnerships that multiply impact instead of dividing it.</p>
+      <span class="vision-label">Our Vision</span>
+      <h2 class="vision-line">An ummah where<br><em>no one is strong alone.</em></h2>
+      <span class="eyebrow" style="display:block;">Our Mission</span>
+      <blockquote class="mission-statement">M1U strengthens the imams, masajid, and waqf of the ummah — so that every community can receive those coming to Islam, serve those living it, and endure beyond those who built it.</blockquote>
+      <p class="waqf-note"><strong>Waqf</strong> — an Islamic endowment. An asset is dedicated permanently and can never be sold or inherited; only what it generates is spent. It is how institutions outlast the people who build them.</p>
+      <p class="sec-sub" style="margin-top:34px;">M1U Foundation Inc. is a 501(c)(3) nonprofit serving as a bridge between people, mosques, nonprofits, and businesses — creating partnerships that multiply impact instead of dividing it.</p>
       <div class="focus-pills">
         <span class="focus-pill">🤲 Revert Support</span>
         <span class="focus-pill">📿 Supporting Imams</span>
@@ -843,9 +880,9 @@
     <div class="prog-header">
       <div>
         <span class="eyebrow">What We Do</span>
-        <h2 class="sec-title">Three Programs</h2>
+        <h2 class="sec-title">What We're Doing Now</h2>
       </div>
-      <p class="sec-sub" style="max-width:300px; font-size:14px;">Each program answers a need the community has named, and each is built to be run well rather than run everywhere.</p>
+      <p class="sec-sub" style="max-width:320px; font-size:14px;">Three programs are active today. Each one is built to be run well before it is run widely.</p>
     </div>
     <div class="prog-list">
 
@@ -1161,13 +1198,13 @@
         <span class="work-icon">🕌</span>
         <h3>Imams &amp; Masjids</h3>
         <p>Join the national imam network, or bring the Thabaat protocol and companion certification to your community at no cost.</p>
-        <a href="https://m1u.org/?page_id=235" class="work-link">Contact Us</a>
+        <a href="mailto:abdul@m1u.org" class="work-link">Contact Us</a>
       </div>
       <div class="work-card">
         <span class="work-icon">🤝</span>
         <h3>Partners</h3>
         <p>Whether you're a nonprofit, a business, or another program in this space — real change happens when we work together.</p>
-        <a href="https://m1u.org/?page_id=235" class="work-link">Partner With Us</a>
+        <a href="mailto:abdul@m1u.org" class="work-link">Partner With Us</a>
       </div>
     </div>
   </div>
@@ -1226,7 +1263,7 @@
     <h2>One Ummah.<br><em>One Mission.</em></h2>
     <p>Building stronger communities through faith, service, and collaboration. Together, we can create lasting impact for generations to come.</p>
     <div class="closing-actions">
-      <a href="https://m1u.org/?page_id=235" class="btn-gold-lg">Contact Us</a>
+      <a href="mailto:abdul@m1u.org" class="btn-gold-lg">Contact Us</a>
       <a href="#thabaat" class="btn-ghost-lg">Learn About Thabaat</a>
     </div>
   </div>
@@ -1255,7 +1292,7 @@
     <div class="f-col">
       <h4>Connect</h4>
       <ul>
-        <li><a href="https://m1u.org/?page_id=235">Contact Us</a></li>
+        <li><a href="mailto:abdul@m1u.org">Contact Us</a></li>
         <li><a href="https://form.jotform.com/262165355132048" target="_blank" rel="noopener">Volunteer</a></li>
         <li><a href="https://minar360.com">Minar360</a></li>
         <li><a href="https://www.instagram.com/m1u_mission1ummah/">Instagram</a></li>
