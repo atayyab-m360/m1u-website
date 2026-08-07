@@ -527,6 +527,9 @@
   .person-role { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 8px; }
   .person-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
   .leader-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .people-group .leader-grid.is-three { grid-template-columns: repeat(3, 1fr); }
+  .is-three .leader-card { padding: 26px 22px; }
+  .is-three .leader-bio { font-size: 13px; }
   .leader-card {
     border: 1px solid var(--border); border-radius: 8px; padding: 28px 26px;
     transition: border-color .2s;
@@ -663,7 +666,7 @@
     .president-block { grid-template-columns: 1fr; text-align: center; padding: 26px 20px; gap: 20px; }
     .pres-photo { margin: 0 auto; }
     .people-grid { grid-template-columns: 1fr; }
-    .leader-grid { grid-template-columns: 1fr; }
+    .leader-grid, .people-group .leader-grid.is-three { grid-template-columns: 1fr; }
     .leader-card { padding: 22px 20px; }
     .group-head { flex-direction: column; gap: 4px; align-items: flex-start; }
     .volunteer-note { padding: 22px 20px; }
@@ -1159,10 +1162,46 @@
         <span class="group-title">Board of Directors</span>
         <span class="group-note">Governance and fiduciary oversight, distinct from day-to-day operations</span>
       </div>
-      <div class="people-grid">
-        <div class="person-card"><div class="person-avatar">👤</div><h3>Ahmed Ali</h3><span class="person-role">Director</span><p>Bio to be updated.</p></div>
-        <div class="person-card"><div class="person-avatar">👤</div><h3>Sami Ahmed</h3><span class="person-role">Director</span><p>Bio to be updated.</p></div>
-        <div class="person-card"><div class="person-avatar">👤</div><h3>Areeb Quasem</h3><span class="person-role">Director</span><p>Bio to be updated.</p></div>
+      <div class="leader-grid is-three">
+        <div class="leader-card">
+          <div class="leader-head">
+            <div class="leader-photo"><img src="images/ahmed-ali.jpg" alt="Ahmed R. Ali"></div>
+            <div>
+              <h3>Ahmed R. Ali</h3>
+              <span class="person-role">Board Member</span>
+            </div>
+          </div>
+          <div class="leader-bio">
+            <p>Ahmed R. Ali is a US-based businessman, entrepreneur, investor, and philanthropist whose work is shaped by a belief that communities are strengthened not by individuals alone, but by institutions, shared responsibility, and people willing to build for generations they may never meet.</p>
+            <p>His philanthropic focus is on helping Muslim communities in North America become more organized, resilient, and institutionally prepared — particularly where access to leadership development, educational support, and sustainable funding is limited. For Ahmed, philanthropy is not only about giving; it is about helping communities stand with dignity, serve with excellence, and endure with purpose.</p>
+          </div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-head">
+            <div class="leader-photo"><img src="images/sami-ahmed.jpg" alt="Sami Ahmed"></div>
+            <div>
+              <h3>Sami Ahmed</h3>
+              <span class="person-role">Board Member</span>
+            </div>
+          </div>
+          <div class="leader-bio">
+            <p>Sami Ahmed brings more than 25 years of professional experience across investments and management consulting, spanning multiple sectors, markets, and geographies. His work has centered on how organizations grow, allocate resources, and create long-term value in both commercial and impact-oriented environments.</p>
+            <p>He serves as Chief Financial &amp; Strategy Officer at QubaLink. A Pakistani-American based in Houston, Texas, Sami holds a bachelor's degree from Georgetown University in Corporate Finance and International Business, and a master's in Sustainable Development from SOAS, University of London.</p>
+          </div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-head">
+            <div class="leader-photo"><img src="images/areeb-quasem.jpg" alt="Areeb Quasem"></div>
+            <div>
+              <h3>Areeb Quasem</h3>
+              <span class="person-role">Board Member</span>
+            </div>
+          </div>
+          <div class="leader-bio">
+            <p>Areeb Quasem is a product and technology leader focused on building digital platforms designed to last. He founded and led a consulting firm working on product development and engineering modernization across the public and private sectors, with experience spanning retail, finance, education, and healthcare.</p>
+            <p>He serves as Chief Product Officer at QubaLink, where he leads the vision, strategy, and execution of integrated ecosystems across community, commerce, finance, and AI. His work centers on turning complex ideas into structured systems built for long-term impact.</p>
+          </div>
+        </div>
       </div>
     </div>
 
