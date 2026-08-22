@@ -50,12 +50,21 @@
   .nav-links { display: flex; gap: 30px; list-style: none; }
   .nav-links a { font-size: 13px; font-weight: 500; color: var(--text); text-decoration: none; transition: color .2s; }
   .nav-links a:hover { color: var(--gold); }
+  .nav-actions { display: flex; align-items: center; gap: 10px; }
   .nav-contact {
-    background: var(--charcoal); color: var(--white);
-    padding: 9px 20px; border-radius: 4px;
-    font-size: 13px; font-weight: 600; text-decoration: none; transition: background .2s;
+    background: transparent; color: var(--text);
+    padding: 9px 16px; border-radius: 4px; border: 1px solid var(--border);
+    font-size: 13px; font-weight: 600; text-decoration: none; transition: all .2s;
+    white-space: nowrap;
   }
-  .nav-contact:hover { background: var(--gold); }
+  .nav-contact:hover { border-color: var(--gold); color: var(--gold); }
+  .nav-book {
+    background: var(--gold); color: var(--charcoal);
+    padding: 9px 20px; border-radius: 4px;
+    font-size: 13px; font-weight: 700; text-decoration: none; transition: background .2s;
+    white-space: nowrap;
+  }
+  .nav-book:hover { background: var(--gold-light); }
 
   /* HERO */
   .hero {
@@ -630,6 +639,8 @@
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
+    .nav-contact { display: none; }
+    .nav-book { padding: 8px 16px; font-size: 12.5px; }
     .hero-content { padding: 0 24px; }
     .hero-actions { gap: 10px; }
     .btn-white, .btn-outline-white { padding: 12px 20px; font-size: 13px; }
@@ -696,7 +707,10 @@
     <li><a href="#network">Network</a></li>
     <li><a href="#people">Our People</a></li>
   </ul>
-  <a href="mailto:abdul@m1u.org" class="nav-contact">Contact Us</a>
+  <div class="nav-actions">
+    <a href="mailto:abdul@m1u.org" class="nav-contact">Contact</a>
+    <a href="https://api.leadconnectorhq.com/widget/booking/LVYJrkjv1Ys4p30dEjZr" class="nav-book" target="_blank" rel="noopener">Book a Call</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -713,7 +727,7 @@
     <p class="hero-sub">M1U Foundation unites individuals, organizations, businesses, and community leaders around a shared mission — to give, serve, and create lasting impact.</p>
     <div class="hero-actions">
       <a href="#thabaat" class="btn-white">Our Core Program</a>
-      <a href="#about" class="btn-outline-white">About M1U</a>
+      <a href="https://api.leadconnectorhq.com/widget/booking/LVYJrkjv1Ys4p30dEjZr" class="btn-outline-white" target="_blank" rel="noopener">Book a Call</a>
     </div>
   </div>
 </section>
@@ -1307,8 +1321,8 @@
     <h2>One Ummah.<br><em>One Mission.</em></h2>
     <p>Building stronger communities through faith, service, and collaboration. Together, we can create lasting impact for generations to come.</p>
     <div class="closing-actions">
-      <a href="mailto:abdul@m1u.org" class="btn-gold-lg">Contact Us</a>
-      <a href="#thabaat" class="btn-ghost-lg">Learn About Thabaat</a>
+      <a href="https://api.leadconnectorhq.com/widget/booking/LVYJrkjv1Ys4p30dEjZr" class="btn-gold-lg" target="_blank" rel="noopener">Book a Call</a>
+      <a href="mailto:abdul@m1u.org" class="btn-ghost-lg">Contact Us</a>
     </div>
   </div>
 </section>
@@ -1336,6 +1350,7 @@
     <div class="f-col">
       <h4>Connect</h4>
       <ul>
+        <li><a href="https://api.leadconnectorhq.com/widget/booking/LVYJrkjv1Ys4p30dEjZr" target="_blank" rel="noopener">Book a Call</a></li>
         <li><a href="mailto:abdul@m1u.org">Contact Us</a></li>
         <li><a href="https://form.jotform.com/262165355132048" target="_blank" rel="noopener">Volunteer</a></li>
         <li><a href="https://minar360.com">Minar360</a></li>
