@@ -4,716 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mission 1 Ummah – M1U</title>
-<meta name="description" content="M1U Foundation unites mosques, nonprofits, businesses, and community leaders around a shared mission — supporting reverts, imams, and communities across America.">
+<meta name="description" content="M1U Foundation unites masajid, nonprofits, businesses, and community leaders around a shared mission of supporting reverts, imams, and communities across America.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    /* Minar360 brand accent — used only inside the app mockup.
-       Replace this one value with Minar360's exact hex to match the real app. */
-    --m360: #3E9BE9;
-    --charcoal: #1E1E1E;
-    --gold: #C9A84C;
-    --gold-light: #E8C97A;
-    --white: #FFFFFF;
-    --off-white: #F5F4F0;
-    --border: #E2DFD8;
-    --muted: #7A7672;
-    --text: #242424;
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
-  a:focus-visible, button:focus-visible, input:focus-visible {
-    outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    height: 60px; display: flex; align-items: center; justify-content: space-between;
-    padding: 0 48px;
-    background: rgba(255,255,255,0.96); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-logo-img { height: 40px; width: auto; object-fit: contain; display: block; }
-  .nav-logo-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 15px; font-weight: 900;
-    color: var(--charcoal); line-height: 1.15;
-    letter-spacing: -0.3px; white-space: nowrap;
-  }
-  .nav-links { display: flex; gap: 30px; list-style: none; }
-  .nav-links a { font-size: 13px; font-weight: 500; color: var(--text); text-decoration: none; transition: color .2s; }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-actions { display: flex; align-items: center; gap: 10px; }
-  .nav-contact {
-    background: transparent; color: var(--text);
-    padding: 9px 16px; border-radius: 4px; border: 1px solid var(--border);
-    font-size: 13px; font-weight: 600; text-decoration: none; transition: all .2s;
-    white-space: nowrap;
-  }
-  .nav-contact:hover { border-color: var(--gold); color: var(--gold); }
-  .nav-book {
-    background: var(--gold); color: var(--charcoal);
-    padding: 9px 20px; border-radius: 4px;
-    font-size: 13px; font-weight: 700; text-decoration: none; transition: background .2s;
-    white-space: nowrap;
-  }
-  .nav-book:hover { background: var(--gold-light); }
-
-  /* HERO */
-  .hero {
-    height: 100vh; position: relative;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 0 0 88px 0; background: #1a1a1a;
-  }
-  .hero-bg { position: absolute; inset: 0; overflow: hidden; }
-  .hero-bg video { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .hero-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.1) 30%, rgba(0,0,0,0.65) 100%);
-  }
-  .hero-content { position: relative; z-index: 1; padding: 0 48px; max-width: 900px; }
-  .hero-eyebrow {
-    font-size: 13px; font-weight: 700; letter-spacing: 4px;
-    text-transform: uppercase; color: var(--gold);
-    display: block; margin-bottom: 20px;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(40px, 6vw, 80px);
-    font-weight: 900; line-height: 1.08;
-    color: var(--white); margin-bottom: 24px;
-  }
-  .hero h1 em { font-style: italic; color: var(--gold-light); }
-  .hero-sub {
-    font-size: 17px; color: rgba(255,255,255,0.75);
-    line-height: 1.7; max-width: 520px; margin-bottom: 36px;
-  }
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
-  .btn-white {
-    background: var(--white); color: var(--charcoal);
-    padding: 14px 28px; border-radius: 4px;
-    font-size: 14px; font-weight: 700; text-decoration: none;
-    transition: background .2s; white-space: nowrap;
-  }
-  .btn-white:hover { background: var(--gold); color: var(--charcoal); }
-  .btn-outline-white {
-    background: transparent; color: rgba(255,255,255,0.85);
-    padding: 14px 28px; border-radius: 4px;
-    border: 1px solid rgba(255,255,255,0.4);
-    font-size: 14px; font-weight: 500; text-decoration: none;
-    transition: all .2s; white-space: nowrap;
-  }
-  .btn-outline-white:hover { border-color: var(--gold-light); color: var(--gold-light); }
-
-  /* TICKER */
-  .ticker { background: var(--gold); padding: 0; overflow: hidden; border-bottom: 1px solid rgba(0,0,0,0.1); }
-  .ticker-inner { display: flex; align-items: center; padding: 13px 48px; gap: 40px; white-space: nowrap; }
-  .ticker-label {
-    font-size: 10px; font-weight: 700; letter-spacing: 2px;
-    text-transform: uppercase; color: var(--charcoal);
-    flex-shrink: 0; border-right: 1px solid rgba(0,0,0,0.15); padding-right: 20px;
-  }
-  .ticker-items { display: flex; gap: 40px; }
-  .ticker-item { font-size: 13px; font-weight: 600; color: var(--charcoal); }
-  .ticker-dot { width: 4px; height: 4px; background: rgba(0,0,0,0.3); border-radius: 50%; margin: auto 0; }
-
-  /* WE BELIEVE */
-  .believe { background: var(--charcoal); padding: 80px 48px; }
-  .believe-inner { max-width: 900px; margin: 0 auto; }
-  .believe-label {
-    font-size: 10px; font-weight: 700; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--gold);
-    display: block; margin-bottom: 24px;
-    border-left: 2px solid var(--gold); padding-left: 12px;
-  }
-  .believe h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 4vw, 48px);
-    font-weight: 400; color: var(--white);
-    line-height: 1.4; font-style: italic;
-  }
-  .believe h2 strong { font-weight: 900; font-style: normal; color: var(--gold); }
-  .believe-cite {
-    font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-    color: rgba(255,255,255,0.35); display: block; margin-top: 22px;
-  }
-  .believe-conviction {
-    margin-top: 34px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.12);
-  }
-  .believe-conviction span {
-    font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gold); display: block; margin-bottom: 12px;
-  }
-  .believe-conviction p {
-    font-size: clamp(17px, 2vw, 21px); color: rgba(255,255,255,0.8);
-    line-height: 1.65; font-weight: 300;
-  }
-  .vision-line {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(30px, 4.2vw, 52px); font-weight: 700;
-    color: var(--charcoal); line-height: 1.2; margin-bottom: 26px;
-  }
-  .vision-line em { font-style: italic; color: var(--gold); }
-  .vision-label {
-    font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gold); display: block; margin-bottom: 14px;
-  }
-  .waqf-note {
-    font-size: 13.5px; color: var(--muted); line-height: 1.7;
-    max-width: 640px; margin: 18px auto 0; font-style: normal;
-  }
-  .waqf-note strong { color: var(--charcoal); font-weight: 600; }
-
-  /* SHARED */
-  .section { padding: 88px 48px; }
-  .container { max-width: 1100px; margin: 0 auto; }
-  .eyebrow {
-    font-size: 10px; font-weight: 700; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--gold);
-    display: block; margin-bottom: 14px;
-    border-left: 2px solid var(--gold); padding-left: 10px;
-  }
-  .sec-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 3.5vw, 44px);
-    font-weight: 700; color: var(--charcoal);
-    line-height: 1.15; margin-bottom: 16px;
-  }
-  .sec-sub { font-size: 16px; color: var(--muted); line-height: 1.8; max-width: 520px; }
-
-  /* FOCUS */
-  .focus { background: var(--off-white); }
-  .mission-statement {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(17px, 2vw, 22px);
-    font-style: italic; color: var(--charcoal); line-height: 1.7;
-    border-left: 3px solid var(--gold);
-    padding: 14px 0 14px 24px; margin: 20px auto 20px;
-    max-width: 760px; text-align: left;
-  }
-  .focus-centered { text-align: center; max-width: 720px; margin: 0 auto; }
-  .focus-centered .eyebrow { display: block; }
-  .focus-centered .sec-sub { margin: 0 auto 40px; }
-  .focus-pills { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 8px; }
-  .focus-pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--white); border: 1.5px solid var(--border);
-    color: var(--charcoal); font-size: 14px; font-weight: 600;
-    padding: 12px 22px; border-radius: 100px; letter-spacing: 0.2px;
-    transition: all .2s; cursor: default;
-  }
-  .focus-pill:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); }
-
-  /* THABAAT */
-  .thabaat { background: var(--white); }
-  .th-head { max-width: 720px; margin-bottom: 44px; }
-  .th-name {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(44px, 6vw, 76px);
-    font-weight: 900; color: var(--charcoal);
-    line-height: 1; margin-bottom: 6px; letter-spacing: -1px;
-  }
-  .th-arabic { font-size: 15px; color: var(--gold); font-weight: 600; letter-spacing: 1px; display: block; margin-bottom: 20px; }
-  .th-tagline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(20px, 2.6vw, 28px);
-    font-style: italic; color: var(--charcoal);
-    line-height: 1.45; margin-bottom: 18px;
-  }
-  .th-lede { font-size: 16px; color: var(--muted); line-height: 1.8; }
-  .th-note {
-    font-size: 14px; color: var(--muted); line-height: 1.7;
-    background: var(--off-white); border-left: 3px solid var(--gold);
-    border-radius: 0 6px 6px 0; padding: 14px 18px; margin-top: 20px;
-  }
-  .th-note strong { color: var(--charcoal); font-weight: 600; }
-  .th-problem {
-    background: var(--charcoal); border-radius: 10px;
-    padding: 44px 48px; margin-bottom: 56px;
-    display: grid; grid-template-columns: 1fr 320px; gap: 56px; align-items: center;
-  }
-  .th-problem-copy h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(24px, 3vw, 34px); font-weight: 700;
-    color: var(--white); line-height: 1.25; margin-bottom: 16px;
-  }
-  .th-problem-copy h3 em { font-style: italic; color: var(--gold); }
-  .th-problem-copy p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 12px; }
-  .th-problem-copy p:last-child { margin-bottom: 0; }
-  .th-problem-copy strong { color: var(--white); font-weight: 600; }
-  .th-stats { display: flex; flex-direction: column; gap: 14px; }
-  .th-stat {
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
-    border-left: 3px solid var(--gold); border-radius: 6px; padding: 18px 20px;
-  }
-  .th-stat-num {
-    font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900;
-    color: var(--gold); line-height: 1; display: block; margin-bottom: 7px;
-  }
-  .th-stat-label { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.55; }
-  .th-source { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 4px; letter-spacing: 0.3px; }
-  .th-promise {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
-    border: 1px solid var(--border); border-radius: 10px;
-    overflow: hidden; margin-bottom: 56px;
-  }
-  .th-promise-item { padding: 32px 28px; border-right: 1px solid var(--border); background: var(--off-white); }
-  .th-promise-item:last-child { border-right: none; }
-  .th-promise-num {
-    font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 900;
-    color: var(--charcoal); line-height: 1; display: block; margin-bottom: 8px;
-  }
-  .th-promise-num small { font-size: 20px; }
-  .th-promise-item h4 { font-size: 14px; font-weight: 700; color: var(--charcoal); margin-bottom: 6px; }
-  .th-promise-item p { font-size: 13px; color: var(--muted); line-height: 1.65; }
-  .th-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 56px; }
-  .th-pillar {
-    border: 1px solid var(--border); border-radius: 8px; padding: 30px 26px;
-    background: var(--white); transition: border-color .2s, box-shadow .2s;
-  }
-  .th-pillar:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(201,168,76,0.08); }
-  .th-pillar-name {
-    font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900;
-    color: var(--charcoal); line-height: 1; margin-bottom: 4px;
-  }
-  .th-pillar-en {
-    font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gold); display: block; margin-bottom: 14px;
-  }
-  .th-pillar p { font-size: 14px; color: var(--muted); line-height: 1.75; }
-  .th-reach {
-    background: var(--charcoal); border-radius: 10px;
-    padding: 40px 44px; margin-bottom: 56px; text-align: center;
-  }
-  .th-reach h3 {
-    font-family: 'Playfair Display', serif; font-size: clamp(22px, 2.8vw, 30px);
-    font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 14px;
-  }
-  .th-reach h3 em { font-style: italic; color: var(--gold); }
-  .th-reach p {
-    font-size: 15px; color: rgba(255,255,255,0.62); line-height: 1.8;
-    max-width: 560px; margin: 0 auto 26px;
-  }
-  .th-reach-btn {
-    display: inline-block; background: var(--gold); color: var(--charcoal);
-    padding: 15px 34px; border-radius: 4px;
-    font-size: 15px; font-weight: 700; text-decoration: none; transition: background .2s;
-  }
-  .th-reach-btn:hover { background: var(--gold-light); }
-  .th-reach-note { font-size: 12.5px; color: rgba(255,255,255,0.38); margin-top: 18px; }
-
-  .th-safe { background: var(--off-white); border: 1px solid var(--border); border-radius: 10px; padding: 40px 44px; margin-bottom: 40px; }
-  .th-safe-head { margin-bottom: 26px; max-width: 640px; }
-  .th-safe-head h3 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--charcoal); margin-bottom: 10px; }
-  .th-safe-head p { font-size: 14px; color: var(--muted); line-height: 1.75; }
-  .th-safe-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 32px; }
-  .th-safe-item { display: flex; gap: 12px; align-items: flex-start; }
-  .th-safe-check { color: var(--gold); font-weight: 800; font-size: 14px; flex-shrink: 0; line-height: 1.6; }
-  .th-safe-item span { font-size: 14px; color: var(--text); line-height: 1.6; }
-  .th-info { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .th-info-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 30px 28px; }
-  .th-info-card h4 { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 700; color: var(--charcoal); margin-bottom: 10px; }
-  .th-info-card p { font-size: 14px; line-height: 1.75; color: var(--muted); }
-  .th-status {
-    font-size: 13px; color: var(--muted); text-align: center;
-    margin-top: 32px; letter-spacing: 0.3px; line-height: 1.7;
-  }
-  .th-status strong { color: var(--charcoal); font-weight: 600; }
-
-  /* MINAR360 */
-  .minar360 { background: var(--white); }
-  .minar360-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-  .m360-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25);
-    padding: 5px 12px; border-radius: 100px; margin-bottom: 20px;
-  }
-  .m360-badge span { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
-  .m360-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px; }
-  .m-feat { background: var(--off-white); border: 1px solid var(--border); border-radius: 6px; padding: 16px; transition: border-color .2s; }
-  .m-feat:hover { border-color: var(--gold); }
-  .m-feat-icon { font-size: 18px; margin-bottom: 8px; display: block; }
-  .m-feat h4 { font-size: 13px; font-weight: 700; color: var(--charcoal); margin-bottom: 3px; }
-  .m-feat p { font-size: 12px; color: var(--muted); line-height: 1.5; }
-  .btn-gold {
-    display: inline-block; background: var(--gold); color: var(--charcoal);
-    padding: 14px 28px; border-radius: 4px;
-    font-size: 14px; font-weight: 700; text-decoration: none;
-    transition: background .2s; margin-top: 28px;
-  }
-  .btn-gold:hover { background: var(--gold-light); }
-  .phone-wrap { display: flex; justify-content: center; }
-  .phone {
-    width: 272px; background: #101010; border-radius: 38px;
-    padding: 10px; box-shadow: 0 40px 80px rgba(0,0,0,0.18);
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-  .phone-screen { background: #171614; border-radius: 30px; overflow: hidden; position: relative; }
-  .ph-island {
-    width: 74px; height: 20px; background: #000; border-radius: 100px;
-    position: absolute; top: 8px; left: 50%; transform: translateX(-50%); z-index: 3;
-  }
-  .ph-status {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 12px 18px 6px; font-size: 9px; font-weight: 700;
-    color: rgba(255,255,255,0.85); letter-spacing: 0.2px;
-  }
-  .ph-status-icons { display: flex; gap: 4px; align-items: center; font-size: 8px; }
-  .ph-body { padding: 6px 12px 0; }
-  .ph-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; padding: 0 3px; }
-  .ph-brand { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 900; color: var(--m360); line-height: 1; }
-  .ph-loc { font-size: 8.5px; color: rgba(255,255,255,0.4); margin-top: 3px; }
-  .ph-avatar {
-    width: 24px; height: 24px; border-radius: 50%;
-    background: rgba(62,155,233,0.18); border: 1px solid rgba(62,155,233,0.32);
-    display: flex; align-items: center; justify-content: center; font-size: 10px;
-  }
-  .ph-prayer {
-    background: linear-gradient(135deg, rgba(62,155,233,0.22), rgba(62,155,233,0.07));
-    border: 1px solid rgba(62,155,233,0.30); border-radius: 12px;
-    padding: 12px 14px; margin-bottom: 12px;
-  }
-  .ph-prayer-top { display: flex; justify-content: space-between; align-items: baseline; }
-  .ph-prayer-label { font-size: 8px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.45); }
-  .ph-prayer-name { font-size: 15px; font-weight: 700; color: var(--white); margin-top: 3px; }
-  .ph-prayer-time { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: var(--m360); line-height: 1; }
-  .ph-prayer-in { font-size: 8.5px; color: rgba(255,255,255,0.4); text-align: right; margin-top: 3px; }
-  .ph-prayer-row { display: flex; justify-content: space-between; margin-top: 11px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08); }
-  .ph-pt { text-align: center; }
-  .ph-pt span { display: block; font-size: 7.5px; color: rgba(255,255,255,0.35); letter-spacing: 0.3px; }
-  .ph-pt strong { display: block; font-size: 9px; color: rgba(255,255,255,0.75); font-weight: 600; margin-top: 2px; }
-  .ph-pt.is-next span, .ph-pt.is-next strong { color: var(--m360); }
-  .ph-quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 14px; }
-  .ph-q {
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 10px; padding: 9px 3px; text-align: center;
-  }
-  .ph-q-ico { font-size: 13px; display: block; margin-bottom: 4px; }
-  .ph-q span { font-size: 7px; color: rgba(255,255,255,0.55); font-weight: 600; letter-spacing: 0.1px; }
-  .ph-sec {
-    display: flex; justify-content: space-between; align-items: baseline;
-    margin-bottom: 7px; padding: 0 3px;
-  }
-  .ph-sec h5 { font-size: 9.5px; font-weight: 700; color: var(--white); letter-spacing: 0.2px; }
-  .ph-sec a { font-size: 8px; color: var(--m360); text-decoration: none; }
-  .ph-feed { display: flex; flex-direction: column; gap: 6px; }
-  .ph-card { display: flex; align-items: center; gap: 9px; background: rgba(255,255,255,0.05); border-radius: 10px; padding: 8px 9px; }
-  .ph-card-ico {
-    width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0;
-    background: rgba(62,155,233,0.14); display: flex; align-items: center; justify-content: center; font-size: 13px;
-  }
-  .ph-card-body { min-width: 0; flex-grow: 1; }
-  .ph-card-title { font-size: 9px; font-weight: 600; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .ph-card-sub { font-size: 8px; color: rgba(255,255,255,0.38); margin-top: 2px; }
-  .ph-pill {
-    font-size: 6.5px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
-    color: var(--m360); background: rgba(62,155,233,0.15); border-radius: 100px;
-    padding: 2px 6px; flex-shrink: 0;
-  }
-  .ph-tabs {
-    display: grid; grid-template-columns: repeat(5, 1fr);
-    border-top: 1px solid rgba(255,255,255,0.07); margin-top: 14px;
-    padding: 8px 0 12px; background: rgba(0,0,0,0.25);
-  }
-  .ph-tab { text-align: center; }
-  .ph-tab-ico { font-size: 12px; display: block; opacity: 0.4; }
-  .ph-tab span { font-size: 6.5px; color: rgba(255,255,255,0.3); display: block; margin-top: 2px; }
-  .ph-tab.is-on .ph-tab-ico { opacity: 1; }
-  .ph-tab.is-on span { color: var(--m360); }
-  .ph-bar { width: 90px; height: 3px; background: rgba(255,255,255,0.25); border-radius: 100px; margin: 0 auto 8px; }
-
-  /* PROGRAMS */
-  .programs { background: var(--off-white); }
-  .prog-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 20px; }
-  .prog-list { display: flex; flex-direction: column; }
-  .prog-row {
-    display: grid; grid-template-columns: 140px 1fr 200px;
-    gap: 28px; align-items: center;
-    padding: 26px 0; border-bottom: 1px solid var(--border);
-    background: transparent; transition: background .15s;
-  }
-  .prog-row:first-child { border-top: 1px solid var(--border); }
-  .prog-row:hover { background: rgba(201,168,76,0.04); }
-  .prog-row:hover .prog-title { color: var(--gold); }
-  .prog-img { border-radius: 4px; overflow: hidden; aspect-ratio: 16/9; }
-  .prog-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .prog-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; display: block; }
-  .prog-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--charcoal); margin-bottom: 5px; transition: color .2s; }
-  .prog-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
-  .prog-status { font-size: 12px; color: var(--muted); line-height: 1.6; }
-  .prog-status strong { color: var(--charcoal); display: block; font-size: 13px; font-weight: 700; margin-bottom: 3px; }
-
-  /* IMAM MAP */
-  .imam-map { background: var(--white); padding: 88px 48px; }
-  .map-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; flex-wrap: wrap; gap: 24px; }
-  .map-legend { display: flex; flex-direction: column; gap: 10px; padding-top: 8px; }
-  .legend-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); font-weight: 500; }
-  .legend-dot { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
-  .legend-dot.dot-gold { background: var(--gold); }
-  .legend-dot.dot-gray { background: #D8D5CE; }
-  .legend-glow-sample { width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle, #FFD700 0%, #FFA500 40%, transparent 100%); box-shadow: 0 0 8px 3px rgba(255,165,0,0.6); flex-shrink: 0; }
-  .map-layout { display: flex; flex-direction: column; gap: 20px; margin-bottom: 20px; }
-  .state-sidebar { background: var(--off-white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
-  .sidebar-search input { width: 100%; padding: 10px 14px; border: none; border-bottom: 1px solid var(--border); background: var(--white); font-size: 13px; font-family: 'Inter', sans-serif; outline: none; color: var(--text); }
-  .state-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); overflow-y: auto; max-height: 220px; }
-  .state-list-item { display: flex; justify-content: space-between; align-items: center; padding: 9px 12px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background .15s; font-size: 12px; }
-  .state-list-item:hover { background: rgba(201,168,76,0.08); }
-  .state-list-item.active { background: rgba(201,168,76,0.12); border-left: 3px solid var(--gold); }
-  .state-list-item.is-confirmed { font-weight: 700; color: var(--charcoal); }
-  .state-list-item.is-soon { color: var(--muted); }
-  .state-count { font-size: 10px; font-weight: 700; background: var(--gold); color: var(--charcoal); padding: 2px 7px; border-radius: 100px; }
-  .state-count.empty { background: var(--border); color: var(--muted); }
-  .map-wrap { position: relative; background: #EEF3F8; border: 1px solid var(--border); border-radius: 12px; padding: 16px; overflow: hidden; }
-  .usa-map { width: 100%; height: auto; }
-  [data-state] { transition: all .15s; cursor: pointer; stroke: white; stroke-width: 0.8; fill: #C8D8E8; }
-  [data-state]:hover { fill: #B8C8D8; opacity: 0.85; }
-  [data-state].confirmed { fill: var(--gold); }
-  [data-state].confirmed:hover { fill: var(--gold-light); }
-  .map-tooltip { display: none; position: absolute; background: var(--charcoal); color: var(--white); padding: 10px 14px; border-radius: 8px; font-size: 12px; pointer-events: none; box-shadow: 0 6px 20px rgba(0,0,0,0.2); border-left: 3px solid var(--gold); z-index: 10; white-space: nowrap; line-height: 1.6; }
-  .state-detail { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 22px 26px; margin-bottom: 20px; }
-  .state-detail-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-  .state-detail-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--charcoal); display: block; }
-  .state-detail-status { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); }
-  .detail-close { background: none; border: 1px solid var(--border); padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; color: var(--muted); transition: all .2s; }
-  .detail-close:hover { background: var(--charcoal); color: var(--white); border-color: var(--charcoal); }
-  .state-detail-body { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
-  .masjid-card { background: var(--off-white); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; }
-  .masjid-card-name { font-size: 13px; font-weight: 600; color: var(--charcoal); margin-bottom: 2px; }
-  .masjid-card-city { font-size: 11px; color: var(--muted); }
-  .map-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-  .map-stat { text-align: center; background: var(--off-white); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
-  .map-stat-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; display: block; line-height: 1; margin-bottom: 6px; }
-  .map-stat-label { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: 0.5px; }
-
-  /* COMMUNITY SPOTLIGHT */
-  .spotlight { position: relative; background: var(--charcoal); padding: 88px 48px; overflow: hidden; }
-  .spotlight-bg-img { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=1400&q=60') center/cover no-repeat; opacity: 0.06; }
-  .spotlight-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(30,30,30,0.97) 0%, rgba(30,30,30,0.93) 100%); }
-  .spotlight-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
-  .spotlight-badge { display: inline-flex; align-items: center; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.35); padding: 8px 20px; border-radius: 100px; margin-bottom: 28px; }
-  .spotlight-badge span { font-size: 13px; font-weight: 700; color: var(--gold); letter-spacing: 0.5px; }
-  .spotlight-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4.5vw, 56px); font-weight: 900; color: var(--white); line-height: 1.1; margin-bottom: 20px; }
-  .spotlight-title em { font-style: italic; color: var(--gold); }
-  .spotlight-sub { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 720px; margin-bottom: 36px; }
-  .spotlight-sub strong { color: var(--white); }
-  .spotlight-quote { font-family: 'Playfair Display', serif; font-size: 19px; font-style: italic; color: var(--gold-light); line-height: 1.65; border-left: 3px solid var(--gold); padding-left: 24px; margin-bottom: 40px; max-width: 800px; }
-  .spotlight-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .spotlight-item { display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 18px; }
-  .detail-icon { font-size: 20px; flex-shrink: 0; }
-  .spotlight-item strong { display: block; font-size: 14px; color: var(--white); font-weight: 700; margin-bottom: 4px; }
-  .spotlight-item span { font-size: 12.5px; color: rgba(255,255,255,0.45); line-height: 1.55; }
-
-  /* PEOPLE */
-  .people { background: var(--white); }
-  .president-block {
-    display: grid; grid-template-columns: auto 1fr; gap: 44px; align-items: center;
-    border: 1px solid var(--border); border-radius: 8px; padding: 44px; margin-bottom: 56px;
-  }
-  .pres-photo { width: 130px; height: 130px; border-radius: 50%; overflow: hidden; border: 3px solid var(--gold); }
-  .pres-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .pres-info h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--charcoal); margin-bottom: 4px; }
-  .pres-role { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: block; }
-  .pres-info p { font-size: 15px; color: var(--muted); line-height: 1.75; }
-  .people-group { margin-bottom: 48px; }
-  .people-group:last-of-type { margin-bottom: 0; }
-  .group-head { display: flex; align-items: baseline; gap: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
-  .group-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--charcoal); }
-  .group-note { font-size: 13px; color: var(--muted); }
-  .people-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-  .person-card { border: 1px solid var(--border); border-radius: 8px; padding: 26px 20px; text-align: center; transition: border-color .2s; }
-  .person-card:hover { border-color: var(--gold); }
-  .person-avatar { width: 78px; height: 78px; border-radius: 50%; background: var(--off-white); border: 2px solid var(--border); margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; overflow: hidden; }
-  .person-avatar img { width: 100%; height: 100%; object-fit: cover; }
-  .person-card h3 { font-size: 15px; font-weight: 700; color: var(--charcoal); margin-bottom: 3px; }
-  .person-role { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 8px; }
-  .person-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
-  .leader-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .people-group .leader-grid.is-three { grid-template-columns: repeat(3, 1fr); }
-  .is-three .leader-card { padding: 26px 22px; }
-  .is-three .leader-bio { font-size: 13px; }
-  .leader-card {
-    border: 1px solid var(--border); border-radius: 8px; padding: 28px 26px;
-    transition: border-color .2s;
-  }
-  .leader-card:hover { border-color: var(--gold); }
-  .leader-head { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
-  .leader-photo {
-    width: 68px; height: 68px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
-    background: var(--off-white); border: 2px solid var(--border);
-    display: flex; align-items: center; justify-content: center; font-size: 24px;
-  }
-  .leader-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .leader-card h3 { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--charcoal); margin-bottom: 3px; }
-  .leader-card .person-role { margin-bottom: 0; }
-  .leader-bio { font-size: 13.5px; color: var(--muted); line-height: 1.75; }
-  .leader-bio p + p { margin-top: 11px; }
-
-  .volunteer-note {
-    background: var(--off-white); border: 1px solid var(--border);
-    border-left: 3px solid var(--gold); border-radius: 8px; padding: 28px 32px;
-  }
-  .volunteer-note h4 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--charcoal); margin-bottom: 8px; }
-  .volunteer-note p { font-size: 14.5px; color: var(--muted); line-height: 1.75; }
-
-  /* WORK WITH US */
-  .work { background: var(--off-white); }
-  .work-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 44px; }
-  .work-card { padding: 30px 24px; background: var(--white); border: 1px solid var(--border); border-radius: 8px; transition: border-color .2s, box-shadow .2s; }
-  .work-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(201,168,76,0.08); }
-  .work-icon { font-size: 26px; margin-bottom: 14px; display: block; }
-  .work-card h3 { font-size: 16px; font-weight: 700; color: var(--charcoal); margin-bottom: 8px; }
-  .work-card p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 18px; }
-  .work-link { font-size: 12px; font-weight: 700; color: var(--charcoal); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: color .2s; }
-  .work-link::after { content: '→'; }
-  .work-link:hover { color: var(--gold); }
-
-  /* ACCOUNTABILITY */
-  .accountability { background: var(--white); }
-  .acct-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; margin-top: 40px; align-items: start; }
-  .acct-statement { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
-  .acct-statement strong { color: var(--charcoal); }
-  .acct-quote { font-family: 'Playfair Display', serif; font-size: 18px; font-style: italic; color: var(--charcoal); line-height: 1.65; border-left: 3px solid var(--gold); padding-left: 20px; margin-top: 28px; }
-  .acct-quote em { color: var(--gold); }
-  .acct-list { display: flex; flex-direction: column; gap: 14px; }
-  .acct-item { display: flex; gap: 16px; align-items: flex-start; background: var(--off-white); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
-  .acct-icon { font-size: 20px; flex-shrink: 0; width: 44px; height: 44px; background: var(--white); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-  .acct-item h4 { font-size: 14px; font-weight: 700; color: var(--charcoal); margin-bottom: 5px; }
-  .acct-item p { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
-  /* CLOSING */
-  .closing { background: var(--charcoal); padding: 88px 48px; text-align: center; position: relative; overflow: hidden; }
-  .closing::before {
-    content: ''; position: absolute; inset: 0;
-    background: url('https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=1200&q=60') center/cover no-repeat;
-    opacity: 0.07;
-  }
-  .closing-inner { position: relative; z-index: 1; }
-  .closing h2 { font-family: 'Playfair Display', serif; font-size: clamp(32px,5.5vw,60px); color: var(--white); line-height: 1.1; margin-bottom: 16px; }
-  .closing h2 em { font-style: italic; color: var(--gold); }
-  .closing p { font-size: 16px; color: rgba(255,255,255,0.5); max-width: 480px; margin: 0 auto 34px; line-height: 1.75; }
-  .closing-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-  .btn-gold-lg {
-    display: inline-block; background: var(--gold); color: var(--charcoal);
-    padding: 16px 36px; border-radius: 4px;
-    font-size: 15px; font-weight: 700; text-decoration: none; transition: background .2s;
-  }
-  .btn-gold-lg:hover { background: var(--gold-light); }
-  .btn-ghost-lg {
-    display: inline-block; background: transparent; color: var(--gold);
-    border: 1px solid var(--gold); padding: 16px 36px; border-radius: 4px;
-    font-size: 15px; font-weight: 700; text-decoration: none; transition: all .2s;
-  }
-  .btn-ghost-lg:hover { background: var(--gold); color: var(--charcoal); }
-
-  /* FOOTER */
-  footer { background: var(--white); border-top: 1px solid var(--border); padding: 52px 48px 28px; }
-  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 52px; padding-bottom: 40px; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
-  .f-brand p { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 260px; margin-bottom: 18px; }
-  .f-socials { display: flex; gap: 14px; }
-  .f-socials a { font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .2s; }
-  .f-socials a:hover { color: var(--gold); }
-  .f-col h4 { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
-  .f-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .f-col ul a { font-size: 13px; color: var(--text); text-decoration: none; transition: color .2s; }
-  .f-col ul a:hover { color: var(--gold); }
-  .f-notice {
-    background: var(--off-white); border: 1px solid var(--border); border-radius: 6px;
-    padding: 14px 18px; margin-bottom: 22px;
-    font-size: 12.5px; color: var(--muted); line-height: 1.65;
-  }
-  .f-notice strong { color: var(--charcoal); font-weight: 600; }
-  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-  .footer-bottom p { font-size: 12px; color: var(--muted); }
-  .f-powered { font-size: 12px; color: var(--muted); }
-  .f-powered strong { color: var(--gold); }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    .nav-contact { display: none; }
-    .nav-book { padding: 8px 16px; font-size: 12.5px; }
-    .hero-content { padding: 0 24px; }
-    .hero-actions { gap: 10px; }
-    .btn-white, .btn-outline-white { padding: 12px 20px; font-size: 13px; }
-    .ticker-inner { padding: 12px 20px; flex-wrap: wrap; gap: 8px; }
-    .ticker-items { flex-wrap: wrap; gap: 14px; }
-    .believe { padding: 56px 20px; }
-    .section { padding: 60px 20px; }
-    .imam-map { padding: 60px 20px; }
-    .map-header { flex-direction: column; gap: 16px; }
-    .state-list { grid-template-columns: 1fr 1fr; }
-    .map-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
-    .focus-pills { gap: 8px; }
-    .focus-pill { font-size: 13px; padding: 10px 16px; }
-    .th-problem { grid-template-columns: 1fr; gap: 32px; padding: 28px 22px; }
-    .th-promise { grid-template-columns: 1fr; }
-    .th-promise-item { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 20px; }
-    .th-promise-item:last-child { border-bottom: none; }
-    .th-pillars { grid-template-columns: 1fr; }
-    .th-reach { padding: 30px 22px; }
-    .th-reach-btn { display: block; }
-    .th-safe { padding: 28px 22px; }
-    .th-safe-grid { grid-template-columns: 1fr; }
-    .th-info { grid-template-columns: 1fr; }
-    .th-info-card { padding: 24px 22px; }
-    .minar360-grid { grid-template-columns: 1fr; gap: 36px; }
-    .phone-wrap { display: flex; margin-top: 8px; }
-    .phone { width: 100%; max-width: 288px; }
-    .m360-feats { grid-template-columns: 1fr 1fr; }
-    .prog-header { flex-direction: column; align-items: flex-start; }
-    .prog-row { grid-template-columns: 1fr; gap: 14px; }
-    .prog-img { display: none; }
-    .spotlight { padding: 60px 20px; }
-    .spotlight-details { grid-template-columns: 1fr; gap: 12px; }
-    .president-block { grid-template-columns: 1fr; text-align: center; padding: 26px 20px; gap: 20px; }
-    .pres-photo { margin: 0 auto; }
-    .people-grid { grid-template-columns: 1fr; }
-    .leader-grid, .people-group .leader-grid.is-three { grid-template-columns: 1fr; }
-    .leader-card { padding: 22px 20px; }
-    .group-head { flex-direction: column; gap: 4px; align-items: flex-start; }
-    .volunteer-note { padding: 22px 20px; }
-    .work-grid { grid-template-columns: 1fr; }
-    .acct-grid { grid-template-columns: 1fr; gap: 36px; }
-    .closing { padding: 64px 20px; }
-    .closing-actions { flex-direction: column; }
-    .btn-gold-lg, .btn-ghost-lg { width: 100%; text-align: center; }
-    .footer-top { grid-template-columns: 1fr; gap: 32px; }
-    footer { padding: 44px 20px 24px; }
-    .footer-bottom { flex-direction: column; text-align: center; }
-  }
-</style>
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
-    <img src="https://i.imgur.com/jmEujuY.png" alt="M1U Logo" class="nav-logo-img">
-    <span class="nav-logo-text">Mission 1 Ummah</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#thabaat">Thabaat</a></li>
-    <li><a href="#programs">Programs</a></li>
-    <li><a href="#network">Network</a></li>
-    <li><a href="#people">Our People</a></li>
-  </ul>
-  <div class="nav-actions">
-    <a href="mailto:abdul@m1u.org" class="nav-contact">Contact</a>
-    <a href="https://book.m1u.org" class="nav-book" target="_blank" rel="noopener">Book a Call</a>
-  </div>
-</nav>
+<div data-m1u="nav"></div>
 
-<!-- HERO -->
+<main id="main">
+
 <section class="hero">
   <div class="hero-bg">
     <video autoplay muted loop playsinline>
@@ -724,15 +26,14 @@
   <div class="hero-content">
     <span class="hero-eyebrow">Mission 1 Ummah</span>
     <h1>One Ummah.<br><em>One Mission.</em><br>Infinite Impact.</h1>
-    <p class="hero-sub">M1U Foundation unites individuals, organizations, businesses, and community leaders around a shared mission — to give, serve, and create lasting impact.</p>
+    <p class="hero-sub">M1U Foundation unites individuals, organizations, businesses, and community leaders around a shared mission to give, serve, and create lasting impact.</p>
     <div class="hero-actions">
-      <a href="#thabaat" class="btn-white">Our Core Program</a>
+      <a href="/initiatives/" class="btn-white">Explore Our Initiatives</a>
       <a href="https://book.m1u.org" class="btn-outline-white" target="_blank" rel="noopener">Book a Call</a>
     </div>
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
     <span class="ticker-label">Our Work</span>
@@ -746,11 +47,10 @@
   </div>
 </div>
 
-<!-- WE BELIEVE -->
 <div class="believe">
   <div class="believe-inner">
     <span class="believe-label">Our Foundation</span>
-    <h2>"The believers, in their mutual mercy and compassion, are like one body — <strong>when one limb suffers, the whole body responds.</strong>"</h2>
+    <h2>"The believers, in their mutual mercy and compassion, are like one body. <strong>When one limb suffers, the whole body responds.</strong>"</h2>
     <span class="believe-cite">Prophet Muhammad ﷺ · Bukhari &amp; Muslim</span>
     <div class="believe-conviction">
       <span>Our Conviction</span>
@@ -759,195 +59,100 @@
   </div>
 </div>
 
-<!-- ABOUT / FOCUS -->
 <section class="section focus" id="about">
   <div class="container">
     <div class="focus-centered">
       <span class="vision-label">Our Vision</span>
       <h2 class="vision-line">An ummah where<br><em>no one is strong alone.</em></h2>
       <span class="eyebrow" style="display:block;">Our Mission</span>
-      <blockquote class="mission-statement">M1U strengthens the imams, masajid, and waqf of the ummah — so that every community can receive those coming to Islam, serve those living it, and endure beyond those who built it.</blockquote>
-      <p class="waqf-note"><strong>Waqf</strong> — an Islamic endowment. An asset is dedicated permanently and can never be sold or inherited; only what it generates is spent. It is how institutions outlast the people who build them.</p>
-      <p class="sec-sub" style="margin-top:34px;">M1U Foundation Inc. is a 501(c)(3) nonprofit serving as a bridge between people, mosques, nonprofits, and businesses — creating partnerships that multiply impact instead of dividing it.</p>
+      <blockquote class="mission-statement">M1U strengthens the imams, masajid, and waqf of the ummah so that every community can receive those coming to Islam, serve those living it, and endure beyond those who built it.</blockquote>
+      <p class="waqf-note"><strong>Waqf</strong> is an Islamic endowment. An asset is dedicated permanently and can never be sold or inherited; only what it generates is spent. It is how institutions outlast the people who build them.</p>
+      <p class="sec-sub" style="margin-top:34px;">M1U Foundation Inc. is a 501(c)(3) nonprofit serving as a bridge between people, masajid, nonprofits, and businesses, creating partnerships that multiply impact instead of dividing it.</p>
       <div class="focus-pills">
         <span class="focus-pill">🤲 Revert Support</span>
         <span class="focus-pill">📿 Supporting Imams</span>
         <span class="focus-pill">🎓 Imam Training</span>
         <span class="focus-pill">🍽️ Feeding the Hungry</span>
-        <span class="focus-pill">🌍 Global Reach</span>
+        <span class="focus-pill">🤝 Community Partnerships</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THABAAT — CORE PROGRAM -->
-<section class="section thabaat" id="thabaat">
+<section class="section thabaat" id="thabaat" aria-labelledby="thabaat-title">
   <div class="container">
 
     <div class="th-head">
-      <span class="eyebrow">Our Core Program</span>
-      <h2 class="th-name">Thabaat</h2>
+      <span class="eyebrow">M1U Initiative</span>
+      <div class="th-title-row">
+        <h2 class="th-name" id="thabaat-title">Thabaat</h2>
+        <span class="status status--development th-dev-label">In Development</span>
+      </div>
       <span class="th-arabic">ثبات · steadfastness, firmness of heart</span>
       <p class="th-tagline">Nobody should walk into Islam alone.</p>
-      <p class="th-lede">Thabaat is a national support program for reverts, built jointly by M1U Foundation and the North American Imams Fellow. It pairs every revert with a trained, screened companion within 48 hours of their shahada — and stays with them for a full year.</p>
+      <p class="th-lede">Thabaat is M1U’s structured support initiative for new Muslims and reverts. The program is being developed around a 12-week Foundations course, trained Rafeeq companions, intake and referral processes, matching, and ongoing follow-up. Program details and enrollment information will be published after the operating process is finalized.</p>
       <p class="th-note"><strong>Why "revert"?</strong> Every child is born upon the fitrah and is turned toward another faith by upbringing. Someone entering Islam is returning to an original state rather than adopting a foreign one.</p>
     </div>
 
-    <div class="th-problem">
+    <div class="th-problem is-single">
       <div class="th-problem-copy">
         <h3>We built a front door.<br><em>Nobody staffed the back door.</em></h3>
         <p>A person takes their shahada. The masjid erupts in takbir. Forty people embrace them, someone presses a phone number into their hand, and they go home.</p>
         <p>Within a month, the numbers have gone cold. Family has stopped speaking to them. Friends have drifted. The community that celebrated them has moved on to the next celebration.</p>
-        <p><strong>What follows is not a crisis of belief. It is a crisis of belonging</strong> — and no one is assigned to catch it.</p>
-      </div>
-      <div class="th-stats">
-        <div class="th-stat">
-          <span class="th-stat-num">Net zero</span>
-          <span class="th-stat-label">Islam in the U.S. gains roughly as many converts as it loses, so conversion has little net effect on the size of the American Muslim population.</span>
-          <div class="th-source">Pew Research Center</div>
-        </div>
-        <div class="th-stat">
-          <span class="th-stat-num">1 in 4</span>
-          <span class="th-stat-label">American adults raised Muslim no longer identify with the faith — the lowest retention rate of any country Pew surveyed.</span>
-          <div class="th-source">Pew Research Center</div>
-        </div>
+        <p><strong>What follows is not a crisis of belief. It is a crisis of belonging.</strong> No one is assigned to catch it.</p>
       </div>
     </div>
 
-    <div class="th-promise">
-      <div class="th-promise-item">
-        <span class="th-promise-num">48<small>hrs</small></span>
-        <h4>A companion is assigned</h4>
-        <p>Not offered. Assigned. Nobody has to find us at the moment they have the least capacity to look.</p>
-      </div>
-      <div class="th-promise-item">
-        <span class="th-promise-num">12<small>mo</small></span>
-        <h4>The relationship holds</h4>
-        <p>Structured check-ins, a needs assessment, and a named person accountable for the first full year.</p>
-      </div>
-      <div class="th-promise-item">
-        <span class="th-promise-num">1<small>:1</small></span>
-        <h4>One human being</h4>
-        <p>Same-gender pairing, supervised monthly, with a clear path to scholars and licensed clinical care.</p>
-      </div>
-    </div>
-
+    <h3 class="th-dev-heading">What is being developed</h3>
     <div class="th-pillars">
       <div class="th-pillar">
+        <span class="status status--development">In Development</span>
+        <div class="th-pillar-name">Foundations</div>
+        <p>A 12-week Foundations course focused on practical learning and lived transition is being developed.</p>
+      </div>
+      <div class="th-pillar">
+        <span class="status status--development">In Development</span>
         <div class="th-pillar-name">Rafeeq</div>
-        <span class="th-pillar-en">Companionship</span>
-        <p>A screened, trained companion who walks alongside a revert for twelve months. Rafeeq means companion, not mentor — the difference is the point.</p>
+        <p>A training and certification framework for volunteer companions is being developed.</p>
       </div>
       <div class="th-pillar">
-        <div class="th-pillar-name">Ta'leem</div>
-        <span class="th-pillar-en">Formation</span>
-        <p>A twelve-week Foundations cohort built around daily practice and lived transition — prayer, family, halal living, workplace — rather than abstract doctrine.</p>
-      </div>
-      <div class="th-pillar">
-        <div class="th-pillar-name">Sanad</div>
-        <span class="th-pillar-en">Support</span>
-        <p>Scholars for direct questions, gender-specific peer circles, licensed counseling by referral, and a staffed national line that a real person answers.</p>
+        <span class="status status--development">In Development</span>
+        <div class="th-pillar-name">Support Process</div>
+        <p>Intake, referral, matching, case review, and follow-up procedures are being designed.</p>
       </div>
     </div>
 
-    <div class="th-reach">
-      <h3>If you're the one who needs this,<br><em>reach out.</em></h3>
-      <p>Whether you took your shahada last week or you're still learning about Islam, you don't have to navigate it alone. Tell us a little about yourself and someone from our team will get in touch.</p>
-      <a href="https://form.jotform.com/262176378637065" class="th-reach-btn" target="_blank" rel="noopener">Connect With Thabaat →</a>
-      <p class="th-reach-note">Your information is never shared, sold, or published.</p>
-    </div>
-
-    <div class="th-safe">
-      <div class="th-safe-head">
-        <h3>Safeguarding is not a footnote</h3>
-        <p>Reverts are often at their most isolated and least protected in the months after shahada. Every commitment below is in place before a single participant is enrolled.</p>
-      </div>
-      <div class="th-safe-grid">
-        <div class="th-safe-item"><span class="th-safe-check">✓</span><span>National background check and registry search on every companion, repeated every two years</span></div>
-        <div class="th-safe-item"><span class="th-safe-check">✓</span><span>Same-gender pairing as the default for all one-to-one contact</span></div>
-        <div class="th-safe-item"><span class="th-safe-check">✓</span><span>Sixteen-hour certification with a pass requirement and annual recertification</span></div>
-        <div class="th-safe-item"><span class="th-safe-check">✓</span><span>Published code of conduct barring romantic pursuit and private financial arrangements</span></div>
-        <div class="th-safe-item"><span class="th-safe-check">✓</span><span>Mental health care delivered only by licensed clinicians — never by volunteers</span></div>
-        <div class="th-safe-item"><span class="th-safe-check">✓</span><span>Participant privacy protected by role. No public directory, ever.</span></div>
-        <div class="th-safe-item"><span class="th-safe-check">✓</span><span>Supervision at one supervisor per twelve companions. Nobody works unsupervised.</span></div>
-        <div class="th-safe-item"><span class="th-safe-check">✓</span><span>A complaint pathway that never routes through the person being complained about</span></div>
-      </div>
-    </div>
-
-    <div class="th-info">
-      <div class="th-info-card">
-        <h4>The Rafeeq Corps</h4>
-        <p>Rafeeqs are screened, certified, and supervised volunteers who commit to twelve months with one person. Recruitment opens alongside the first pilot cohort, and every applicant goes through references, a background check, a structured interview, and sixteen hours of certification before they are matched with anyone.</p>
-      </div>
-      <div class="th-info-card">
-        <h4>For imams and masjids</h4>
-        <p>The intake protocol, curriculum, and companion certification are offered at no cost to imams and to existing revert-support programs. Where a capable program already exists, Thabaat equips it rather than competing with it.</p>
-      </div>
-    </div>
-
-    <p class="th-status"><strong>Thabaat is in development.</strong><br>The first pilot cohort launches in 2026. Site announcements and Rafeeq recruitment details to follow.</p>
+    <p class="th-status">Thabaat is designed to support the work already being done by imams and masajid, not compete with it.</p>
 
   </div>
 </section>
 
-<!-- PROGRAMS -->
-<section class="section programs" id="programs">
+<section class="section initiatives-area" id="initiatives" aria-labelledby="initiatives-title">
+  <span id="programs"></span>
   <div class="container">
-    <div class="prog-header">
+    <div class="area-head">
       <div>
         <span class="eyebrow">What We Do</span>
-        <h2 class="sec-title">What We're Doing Now</h2>
+        <h2 class="sec-title" id="initiatives-title">Our Initiatives</h2>
+        <p class="sec-sub">Focused programs designed to strengthen the people and institutions that serve our communities.</p>
       </div>
-      <p class="sec-sub" style="max-width:320px; font-size:14px;">Three programs are active today. Each one is built to be run well before it is run widely.</p>
+      <a href="/initiatives/" class="area-link">See all initiatives</a>
     </div>
-    <div class="prog-list">
-
-      <div class="prog-row">
-        <div class="prog-img"><img src="https://images.unsplash.com/photo-1519817650390-64a93db51149?w=400&q=80" alt="Thabaat — revert support"></div>
-        <div class="prog-info">
-          <span class="prog-tag">Core Program</span>
-          <div class="prog-title">Thabaat — Revert Support</div>
-          <div class="prog-desc">A trained, screened companion for every revert, assigned within 48 hours of shahada and held for twelve months. Built jointly with the North American Imams Fellow.</div>
-        </div>
-        <div class="prog-status"><strong>In development</strong>First pilot cohort in 2026</div>
-      </div>
-
-      <div class="prog-row">
-        <div class="prog-img"><img src="https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=400&q=80" alt="Imam Support"></div>
-        <div class="prog-info">
-          <span class="prog-tag">Program</span>
-          <div class="prog-title">Imam Support</div>
-          <div class="prog-desc">Ensuring our spiritual leaders can serve their communities full-time. Imams are present at nearly every moment that matters in a Muslim's life — and are too often the least supported people in the room. Two training tracks are in development: financial health for imams and their families, and using digital tools to extend their reach.</div>
-        </div>
-        <div class="prog-status"><strong>Active</strong>National imam network</div>
-      </div>
-
-      <div class="prog-row">
-        <div class="prog-img"><img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400&q=80" alt="Food4Thought"></div>
-        <div class="prog-info">
-          <span class="prog-tag">Program</span>
-          <div class="prog-title">Food4Thought</div>
-          <div class="prog-desc">Feeding our community with dignity, compassion, and care. Built on years of local relationships, the program reaches people who would rather go without than ask — and meets them without making them explain themselves.</div>
-        </div>
-        <div class="prog-status"><strong>Active</strong>Established operation</div>
-      </div>
-
-    </div>
+    <div data-m1u="initiatives" data-filter="featured" data-variant="summary" data-columns="4"></div>
   </div>
 </section>
 
-<!-- IMAM NETWORK MAP -->
 <section class="section imam-map" id="network">
   <div class="container">
     <div class="map-header">
       <div>
-        <span class="eyebrow">National Imam Network</span>
+        <span class="eyebrow">Where We Work</span>
         <h2 class="sec-title">Building a Movement,<br>State by State</h2>
-        <p class="sec-sub">M1U is building a national network of imams, one region at a time — beginning in the DMV and extending to New York, Houston, and Seattle.</p>
+        <p class="sec-sub">M1U is beginning in the DMV and building the foundation to serve additional communities over time.</p>
       </div>
       <div class="map-legend">
         <div class="legend-item"><div class="legend-dot dot-gold"></div><span>Active Region</span></div>
-        <div class="legend-item"><div class="legend-dot dot-gray"></div><span>Coming Soon</span></div>
+        <div class="legend-item"><div class="legend-dot dot-gray"></div><span>Not yet active</span></div>
         <div class="legend-item"><div class="legend-glow-sample"></div><span>Where We're Working</span></div>
       </div>
     </div>
@@ -986,34 +191,39 @@
       <div class="state-detail-body" id="detailBody"></div>
     </div>
 
-    <div class="map-stats">
-      <div class="map-stat"><span class="map-stat-num" style="color:var(--gold)">6</span><span class="map-stat-label">Active Regions</span></div>
-      <div class="map-stat"><span class="map-stat-num" style="color:var(--gold)">900+</span><span class="map-stat-label">Imams Nationally</span></div>
-      <div class="map-stat"><span class="map-stat-num" style="color:var(--charcoal)">3</span><span class="map-stat-label">Core Programs</span></div>
-    </div>
+</div>
   </div>
 </section>
 
-<!-- COMMUNITY SPOTLIGHT -->
-<section class="spotlight" id="community">
-  <div class="spotlight-bg-img"></div>
-  <div class="spotlight-overlay"></div>
-  <div class="container spotlight-inner">
-    <div class="spotlight-badge"><span>🌙 Community Spotlight</span></div>
-    <h2 class="spotlight-title">They've Been Praying in a Parking Lot<br><em>for Two Years.</em></h2>
-    <p class="spotlight-sub">In Warrenton, Virginia, a small but faithful Muslim community gathers every Jumu'ah in a parking lot — rain, wind, or shine — because they have nowhere else to go. <strong>This is the kind of community M1U exists to stand beside.</strong></p>
-    <div class="spotlight-quote">
-      "Every Muslim who has ever stood in a row for Salah knows what it means to belong."
+<section class="section cta-area" id="calls-to-action" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="area-head">
+      <div>
+        <span class="eyebrow">Where Help Is Needed</span>
+        <h2 class="sec-title" id="cta-title">Community Calls to Action</h2>
+        <p class="sec-sub">When one community needs help, we respond together.</p>
+      </div>
+      <a href="/calls-to-action/" class="area-link">How calls to action work</a>
     </div>
-    <div class="spotlight-details">
-      <div class="spotlight-item"><span class="detail-icon">📍</span><div><strong>Warrenton, Virginia</strong><span>A rural community with no dedicated Islamic facility</span></div></div>
-      <div class="spotlight-item"><span class="detail-icon">🕌</span><div><strong>The need</strong><span>A permanent, dignified space to pray and gather</span></div></div>
-      <div class="spotlight-item"><span class="detail-icon">🔄</span><div><strong>An ongoing focus</strong><span>M1U highlights a community in need on a recurring basis</span></div></div>
-    </div>
+    <div data-m1u="calls-to-action" data-group="current" data-filter="featured" data-variant="summary"></div>
   </div>
 </section>
 
-<!-- MINAR360 -->
+<section class="section impact-area" id="impact" aria-labelledby="impact-title" data-m1u-hide-empty hidden>
+  <div class="container">
+    <div class="area-head">
+      <div>
+        <span class="eyebrow">What We've Supported</span>
+        <h2 class="sec-title" id="impact-title">Our Impact</h2>
+        <p class="sec-sub">Our mission is measured by what we accomplish.</p>
+      </div>
+      <a href="/impact/" class="area-link">See our impact</a>
+    </div>
+    <div data-m1u="metrics"></div>
+    <div data-m1u="impact"></div>
+  </div>
+</section>
+
 <section class="section minar360" id="minar360">
   <div class="container">
     <div class="minar360-grid">
@@ -1021,16 +231,16 @@
         <div class="m360-badge"><span>🕌 Official Technology Partner</span></div>
         <span class="eyebrow">Powered By</span>
         <h2 class="sec-title">Discover Your Community with Minar360</h2>
-        <p class="sec-sub">M1U is proud to partner with Minar360 — the all-in-one platform for Muslims to find local masjids, halal food, events, and businesses in one place.</p>
+        <p class="sec-sub">M1U is proud to partner with Minar360, the all-in-one platform for Muslims to find local masajid, halal food, events, and businesses in one place.</p>
         <div class="m360-feats">
-          <div class="m-feat"><span class="m-feat-icon">🕌</span><h4>Find Masjids</h4><p>Prayer times &amp; Jumu'ah nearby.</p></div>
+          <div class="m-feat"><span class="m-feat-icon">🕌</span><h4>Find Masajid</h4><p>Prayer times &amp; Jumu'ah nearby.</p></div>
           <div class="m-feat"><span class="m-feat-icon">🍽️</span><h4>Halal Food</h4><p>Certified restaurants near you.</p></div>
           <div class="m-feat"><span class="m-feat-icon">📅</span><h4>Events</h4><p>Local Islamic events &amp; gatherings.</p></div>
           <div class="m-feat"><span class="m-feat-icon">💼</span><h4>Businesses</h4><p>Support Muslim-owned businesses.</p></div>
         </div>
         <a href="https://minar360.com" class="btn-gold">Explore Minar360 →</a>
       </div>
-      <div class="phone-wrap">
+      <div class="phone-wrap" aria-hidden="true">
         <div class="phone">
           <div class="phone-screen">
             <div class="ph-island"></div>
@@ -1077,7 +287,7 @@
 
               <div class="ph-sec">
                 <h5>Near You</h5>
-                <a href="#minar360">See all</a>
+                <a href="#minar360" tabindex="-1">See all</a>
               </div>
               <div class="ph-feed">
                 <div class="ph-card">
@@ -1088,10 +298,10 @@
                   </div>
                 </div>
                 <div class="ph-card">
-                  <div class="ph-card-ico">🤲</div>
+                  <div class="ph-card-ico">📖</div>
                   <div class="ph-card-body">
-                    <div class="ph-card-title">Janazah — Br. Yusuf Rahman</div>
-                    <div class="ph-card-sub">After Dhuhr · ADAMS Center</div>
+                    <div class="ph-card-title">Weekend Qur'an Circle</div>
+                    <div class="ph-card-sub">Sundays · After Fajr</div>
                   </div>
                   <span class="ph-pill">New</span>
                 </div>
@@ -1120,18 +330,17 @@
   </div>
 </section>
 
-<!-- OUR PEOPLE -->
 <section class="section people" id="people">
   <div class="container">
     <span class="eyebrow">Our People</span>
     <h2 class="sec-title" style="margin-bottom:36px;">The Team Behind the Mission</h2>
 
     <div class="president-block">
-      <div class="pres-photo"><img src="images/abdulhakim-mohamed.jpg" alt="Dr. Abdulhakim Mohamed"></div>
+      <div class="pres-photo"><img src="/images/abdulhakim-mohamed.jpg" alt="Dr. Abdulhakim Mohamed"></div>
       <div class="pres-info">
         <h3>Dr. Abdulhakim Mohamed</h3>
-        <span class="pres-role">President, M1U Foundation Inc. · CEO, North American Imams Fellow</span>
-        <p>Dr. Abdulhakim Mohamed is President of M1U Foundation Inc., a 501(c)(3) nonprofit dedicated to advancing charitable and community-focused initiatives. He also serves as Chief Executive Officer of the North American Imams Fellow and President of the Global Imams and Scholars Council, and is a member of the Muslim World League.</p>
+        <span class="pres-role">President, M1U Foundation Inc.</span>
+        <p>Dr. Abdulhakim Mohamed is President of M1U Foundation Inc., a 501(c)(3) nonprofit dedicated to advancing charitable and community-focused initiatives. He also serves as President of the Global Imams and Scholars Council and is a member of the Muslim World League.</p>
         <p style="margin-top:14px;">Dr. Mohamed holds a Ph.D. in Islamic Studies and has served as an imam for over forty years. His career has also included work in education as both a teacher and a principal. He has been actively engaged in da'wah in the United States since 1995, dedicating his life to Islamic scholarship, community leadership, and service.</p>
         <p style="margin-top:14px;">He is based in Michigan.</p>
       </div>
@@ -1145,7 +354,7 @@
       <div class="leader-grid">
         <div class="leader-card">
           <div class="leader-head">
-            <div class="leader-photo"><img src="images/abdul-tayyab.jpg" alt="Abdul Tayyab"></div>
+            <div class="leader-photo"><img src="/images/abdul-tayyab.jpg" alt="Abdul Tayyab"></div>
             <div>
               <h3>Abdul Tayyab</h3>
               <span class="person-role">Vice President of Operations</span>
@@ -1158,7 +367,7 @@
         </div>
         <div class="leader-card">
           <div class="leader-head">
-            <div class="leader-photo"><img src="images/saba-asad.jpg" alt="Saba Asad"></div>
+            <div class="leader-photo"><img src="/images/saba-asad.jpg" alt="Saba Asad"></div>
             <div>
               <h3>Saba Asad</h3>
               <span class="person-role">Secretary</span>
@@ -1180,20 +389,20 @@
       <div class="leader-grid is-three">
         <div class="leader-card">
           <div class="leader-head">
-            <div class="leader-photo"><img src="images/ahmed-ali.jpg" alt="Ahmed R. Ali"></div>
+            <div class="leader-photo"><img src="/images/ahmed-ali.jpg" alt="Ahmed R. Ali"></div>
             <div>
               <h3>Ahmed R. Ali</h3>
-              <span class="person-role">Board Member</span>
+              <span class="person-role">Founder &amp; Chairman of the Board</span>
             </div>
           </div>
           <div class="leader-bio">
             <p>Ahmed R. Ali is a US-based businessman, entrepreneur, investor, and philanthropist whose work is shaped by a belief that communities are strengthened not by individuals alone, but by institutions, shared responsibility, and people willing to build for generations they may never meet.</p>
-            <p>His philanthropic focus is on helping Muslim communities in North America become more organized, resilient, and institutionally prepared — particularly where access to leadership development, educational support, and sustainable funding is limited. For Ahmed, philanthropy is not only about giving; it is about helping communities stand with dignity, serve with excellence, and endure with purpose.</p>
+            <p>His philanthropic focus is on helping Muslim communities in North America become more organized, resilient, and institutionally prepared, particularly where access to leadership development, educational support, and sustainable funding is limited. For Ahmed, philanthropy is not only about giving; it is about helping communities stand with dignity, serve with excellence, and endure with purpose.</p>
           </div>
         </div>
         <div class="leader-card">
           <div class="leader-head">
-            <div class="leader-photo"><img src="images/sami-ahmad.jpg" alt="Sami Ahmad"></div>
+            <div class="leader-photo"><img src="/images/sami-ahmad.jpg" alt="Sami Ahmad"></div>
             <div>
               <h3>Sami Ahmad</h3>
               <span class="person-role">Board Member</span>
@@ -1206,7 +415,7 @@
         </div>
         <div class="leader-card">
           <div class="leader-head">
-            <div class="leader-photo"><img src="images/areeb-quasem.jpg" alt="Areeb Quasem"></div>
+            <div class="leader-photo"><img src="/images/areeb-quasem.jpg" alt="Areeb Quasem"></div>
             <div>
               <h3>Areeb Quasem</h3>
               <span class="person-role">Board Member</span>
@@ -1214,7 +423,7 @@
           </div>
           <div class="leader-bio">
             <p>Areeb Quasem is a product and technology leader focused on building digital platforms designed to last. He founded and led a consulting firm working on product development and engineering modernization across the public and private sectors, with experience spanning retail, finance, education, and healthcare.</p>
-            <p>His work has centered on partnering with executive teams to launch digital platforms, modernize legacy systems, and implement scalable product architectures — turning complex ideas into structured systems built for long-term impact.</p>
+            <p>His work has centered on partnering with executive teams to launch digital platforms, modernize legacy systems, and implement scalable product architectures, turning complex ideas into structured systems built for long-term impact.</p>
           </div>
         </div>
       </div>
@@ -1227,14 +436,13 @@
       </div>
       <div class="volunteer-note">
         <h4>M1U runs on volunteers</h4>
-        <p>Every program on this page depends on people who give their time without being asked twice — at the masjid, on the phone, and behind the scenes. Volunteer recognition is published here as programs come online, and Thabaat's Rafeeq Corps will be named among them.</p>
+        <p>Every program on this page depends on people who give their time without being asked twice, whether at the masjid, on the phone, or behind the scenes. Volunteer recognition is published here as programs come online, and Thabaat's Rafeeq Corps will be named among them.</p>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- WORK WITH US -->
 <section class="section work" id="involved">
   <div class="container">
     <span class="eyebrow">Work With Us</span>
@@ -1248,17 +456,23 @@
       </div>
       <div class="work-card">
         <span class="work-icon">🕌</span>
-        <h3>Imams &amp; Masjids</h3>
-        <p>Join the national imam network, or bring the Thabaat protocol and companion certification to your community at no cost.</p>
+        <h3>Support Imam Education &amp; Development</h3>
+        <p>Help M1U develop practical education, resources, and support for imams and their families.</p>
         <a href="mailto:abdul@m1u.org" class="work-link">Contact Us</a>
+      </div>
+      <div class="work-card">
+        <span class="work-icon">🤲</span>
+        <h3>Help Build Revert Support</h3>
+        <p>Volunteer or partner with M1U as we develop Thabaat's Foundations course, Rafeeq training, and follow-up model.</p>
+        <a href="mailto:abdul@m1u.org" class="work-link">Get Involved</a>
       </div>
       <div class="work-card">
         <span class="work-icon">🤝</span>
         <h3>Partners</h3>
-        <p>Whether you're a nonprofit, a business, or another program in this space — real change happens when we work together.</p>
+        <p>Whether you're a nonprofit, a business, or another program in this space, real change happens when we work together.</p>
         <a href="mailto:abdul@m1u.org" class="work-link">Partner With Us</a>
       </div>
-      <div class="work-card">
+      <div class="work-card is-wide">
         <span class="work-icon">📅</span>
         <h3>Book a Call</h3>
         <p>Schedule time with Dr. Abdulhakim Mohamed, President of M1U. Tell us what you'd like to discuss and we'll come prepared.</p>
@@ -1268,7 +482,6 @@
   </div>
 </section>
 
-<!-- ACCOUNTABILITY -->
 <section class="section accountability" id="accountability">
   <div class="container">
     <span class="eyebrow">Our Commitment</span>
@@ -1276,7 +489,7 @@
     <div class="acct-grid">
       <div>
         <p class="acct-statement">M1U Foundation Inc. is a registered <strong>501(c)(3) nonprofit.</strong> Our programs are governed by a board, and our operating costs are covered separately through partnerships, sponsorships, and organizational support.</p>
-        <p class="acct-statement">We would rather run three programs properly than ten thinly. Where a capable organization already does the work, we support it instead of duplicating it.</p>
+        <p class="acct-statement">We develop programs carefully, confirm community needs, and expand when the structure and support are ready. Where a capable organization already does the work, we support it instead of duplicating it.</p>
         <div class="acct-quote">
           "Most nonprofits ask: will you donate?<br>M1U asks a different question:<br><em>Will you help build a stronger Ummah?</em>"
         </div>
@@ -1300,7 +513,7 @@
           <div class="acct-icon">📊</div>
           <div>
             <h4>Measured honestly</h4>
-            <p>We report what actually happened — including what didn't work. Activity is not the same as outcome, and we don't confuse the two.</p>
+            <p>We report what actually happened, including what didn't work. Activity is not the same as outcome, and we don't confuse the two.</p>
           </div>
         </div>
         <div class="acct-item">
@@ -1315,7 +528,6 @@
   </div>
 </section>
 
-<!-- CLOSING -->
 <section class="closing">
   <div class="closing-inner">
     <h2>One Ummah.<br><em>One Mission.</em></h2>
@@ -1327,50 +539,17 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div class="f-brand">
-      <img src="https://i.imgur.com/jmEujuY.png" alt="Mission 1 Ummah" style="height:48px; width:auto; object-fit:contain; margin-bottom:12px; display:block;">
-      <p>Mission 1 Ummah — uniting mosques, nonprofits, businesses, and community leaders around a shared mission of service.</p>
-      <div class="f-socials">
-        <a href="https://www.instagram.com/m1u_mission1ummah/">Instagram</a>
-        <a href="https://www.youtube.com/@MissionUmmah">YouTube</a>
-      </div>
-    </div>
-    <div class="f-col">
-      <h4>Organization</h4>
-      <ul>
-        <li><a href="#about">About M1U</a></li>
-        <li><a href="#programs">Programs</a></li>
-        <li><a href="#people">Our People</a></li>
-        <li><a href="#network">Imam Network</a></li>
-      </ul>
-    </div>
-    <div class="f-col">
-      <h4>Connect</h4>
-      <ul>
-        <li><a href="https://book.m1u.org" target="_blank" rel="noopener">Book a Call</a></li>
-        <li><a href="mailto:abdul@m1u.org">Contact Us</a></li>
-        <li><a href="https://form.jotform.com/262165355132048" target="_blank" rel="noopener">Volunteer</a></li>
-        <li><a href="https://minar360.com">Minar360</a></li>
-        <li><a href="https://www.instagram.com/m1u_mission1ummah/">Instagram</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="f-notice">
-    <strong>A note on giving:</strong> M1U is not accepting online donations through this site at this time. If you would like to support our work, please contact us directly and a member of our team will follow up.
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 M1U Foundation Inc. All Rights Reserved.</p>
-    <p class="f-powered">Community platform by <strong>Minar360</strong></p>
-  </div>
-</footer>
+</main>
+
+<div data-m1u="footer"></div>
+
+<script src="/assets/content.js"></script>
+<script src="/assets/site.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
 <script>
-// ── NETWORK DATA ──
+
 const networkData = {
   'Virginia':        { status:'confirmed', leader:'Dr. Abdulhakim Mohamed', masjids:[
     {name:'Northern Virginia', city:'Virginia', lat:38.882, lng:-77.171}
@@ -1381,15 +560,6 @@ const networkData = {
   'Washington D.C.': { status:'confirmed', leader:'TBD', masjids:[
     {name:'Washington, D.C.', city:'District of Columbia', lat:38.907, lng:-77.036}
   ]},
-  'New York':        { status:'confirmed', leader:'TBD', masjids:[
-    {name:'New York City', city:'New York', lat:40.713, lng:-74.006}
-  ]},
-  'Texas':           { status:'confirmed', leader:'TBD', masjids:[
-    {name:'Houston', city:'Texas', lat:29.760, lng:-95.370}
-  ]},
-  'Washington':      { status:'confirmed', leader:'TBD', masjids:[
-    {name:'Seattle', city:'Washington', lat:47.606, lng:-122.332}
-  ]}
 };
 
 const allStateNames = [
@@ -1419,7 +589,10 @@ const abbrMap = {
 
 const tooltip = document.getElementById('mapTooltip');
 const mapWrap = document.getElementById('mapWrap');
-let projection, path;
+let projection, path, selectionLayer;
+const statePaths = {};
+const canHover = window.matchMedia('(hover: hover)').matches;
+const isActive = (name) => !!(networkData[name] && networkData[name].status === 'confirmed');
 
 async function initMap() {
   const us = await d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json');
@@ -1452,33 +625,22 @@ async function initMap() {
     .attr('d', path)
     .attr('data-fips', d => d.id)
     .attr('data-state', d => fipsToName[String(d.id).padStart(2,'0')] || '')
-    .attr('fill', d => {
-      const name = fipsToName[String(d.id).padStart(2,'0')];
-      const data = networkData[name];
-      if (data && data.status === 'confirmed') return '#C9A84C';
-      return '#B8CCE0';
-    })
-    .attr('stroke', 'white')
-    .attr('stroke-width', 0.7)
-    .style('cursor','pointer')
-    .style('transition','fill 0.2s')
+    .attr('class', d => 'map-state' + (isActive(fipsToName[String(d.id).padStart(2,'0')]) ? ' is-active' : ''))
+    .each(d => { const n = fipsToName[String(d.id).padStart(2,'0')]; if (n) statePaths[n] = d; })
     .on('mousemove', function(event, d) {
+      if (!canHover) return;
       const name = fipsToName[String(d.id).padStart(2,'0')] || 'Unknown';
       const data = networkData[name];
       const count = data ? data.masjids.length : 0;
-      const status = data && data.status === 'confirmed' ? '✅ Active Region' : '⏳ Coming Soon';
+      const status = data && data.status === 'confirmed' ? '✅ Active Region' : 'Not yet active';
       tooltip.innerHTML = `<strong style="color:#C9A84C">${name}</strong><br>${status}`;
       const rect = mapWrap.getBoundingClientRect();
       tooltip.style.left = (event.clientX - rect.left + 14)+'px';
       tooltip.style.top  = (event.clientY - rect.top  - 52)+'px';
       tooltip.style.display = 'block';
-      d3.select(this).attr('fill', data && data.status==='confirmed' ? '#E8C97A' : '#9BBAD0');
     })
-    .on('mouseleave', function(event, d) {
+    .on('mouseleave', function() {
       tooltip.style.display = 'none';
-      const name = fipsToName[String(d.id).padStart(2,'0')];
-      const data = networkData[name];
-      d3.select(this).attr('fill', data && data.status==='confirmed' ? '#C9A84C' : '#B8CCE0');
     })
     .on('click', function(event, d) {
       const name = fipsToName[String(d.id).padStart(2,'0')] || '';
@@ -1490,7 +652,11 @@ async function initMap() {
     .attr('d', path)
     .attr('fill','none')
     .attr('stroke','white')
-    .attr('stroke-width', 0.8);
+    .attr('stroke-width', 0.8)
+    .attr('pointer-events','none');
+
+
+  selectionLayer = g.append('g').attr('class', 'map-selection-layer');
 
   states.features.forEach(d => {
     const name = fipsToName[String(d.id).padStart(2,'0')];
@@ -1552,6 +718,7 @@ function drawGlowDots() {
         .attr('stroke','white').attr('stroke-width', 1.2)
         .style('cursor','pointer')
         .on('mousemove', (event) => {
+          if (!canHover) return;
           tooltip.innerHTML = `<strong style="color:#C9A84C">📍 ${m.name}</strong>`;
           const rect = mapWrap.getBoundingClientRect();
           tooltip.style.left = (event.clientX - rect.left + 14)+'px';
@@ -1579,7 +746,7 @@ function buildSidebar(filter = '') {
     const item = document.createElement('div');
     item.className = `state-list-item ${isConf ? 'is-confirmed' : 'is-soon'}`;
     item.dataset.state = state;
-    item.innerHTML = `<span>${state}</span><span class="state-count ${count===0?'empty':''}">${count>0?count:'—'}</span>`;
+    item.innerHTML = `<span>${state}</span>${count>0?`<span class="state-count">${count}</span>`:''}`;
     item.addEventListener('click', () => selectState(state));
     list.appendChild(item);
   });
@@ -1592,20 +759,28 @@ function selectState(name) {
   const item = document.querySelector(`.state-list-item[data-state="${name}"]`);
   if (item) { item.classList.add('active'); item.scrollIntoView({block:'nearest'}); }
   showDetail(name, networkData[name]);
+  drawSelection(name);
+}
+
+function drawSelection(name) {
+  if (!selectionLayer) return;
+  selectionLayer.selectAll('*').remove();
+  if (name && statePaths[name]) selectionLayer.append('path').datum(statePaths[name]).attr('class', 'map-selection').attr('d', path);
 }
 
 function showDetail(name, data) {
   document.getElementById('detailName').textContent = name;
-  document.getElementById('detailStatus').textContent = data?.status === 'confirmed' ? 'Active Region' : 'Coming Soon';
+  document.getElementById('detailStatus').textContent = data?.status === 'confirmed' ? 'Active Region' : 'Not yet active';
   const body = document.getElementById('detailBody');
   body.innerHTML = data?.masjids?.length > 0
     ? data.masjids.map(m => `<div class="masjid-card"><div class="masjid-card-name">📍 ${m.name}</div><div class="masjid-card-city">${m.city}</div></div>`).join('')
-    : '<p style="color:#7A7672;font-size:14px;">Not yet active in this state. Check back as the network grows.</p>';
+    : '<p style="color:#7A7672;font-size:14px;">Not yet active in this state.</p>';
   document.getElementById('stateDetail').style.display = 'block';
 }
 
 function closeDetail() {
   document.getElementById('stateDetail').style.display = 'none';
+  drawSelection(null);
   document.querySelectorAll('.state-list-item').forEach(i => i.classList.remove('active'));
 }
 
