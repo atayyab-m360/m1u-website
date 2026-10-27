@@ -89,9 +89,64 @@
 
   function hasImpact() { return M.impact.length > 0; }
 
+  function eventStatus(e) {
+    var st = String(e.status || 'scheduled').toLowerCase();
+    return st === 'cancelled' ? 'canceled' : st;
+  }
+  function eventEnd(e) { return e.endDate || e.date; }
+  function datePassed(e) { return eventEnd(e) < today(); }
+  function allEvents() { return (M.events || []).filter(function (e) { return visible(e, true); }); }
+
+  function eventPlacement(e) {
+    var st = eventStatus(e);
+    if (st === 'completed') return 'past';
+    if (st === 'postponed') return 'upcoming';
+    if (st === 'canceled') return datePassed(e) ? 'hidden' : 'upcoming';
+    return datePassed(e) ? 'past' : 'upcoming';
+  }
+
+  function nonEmpty(a) { return !!(a && a.length); }
+
+  function recapVisible(e) {
+    return !!(e.recap && nonEmpty(e.recap.text) && visible(e.recap, true) && datePassed(e));
+  }
+
+  function hasDetails(e) {
+    if (eventStatus(e) === 'canceled') return false;
+    return recapVisible(e) || nonEmpty(e.photos) || !!(e.recording && e.recording.href) || nonEmpty(e.resources) || nonEmpty(e.outcomes);
+  }
+  function eventUrl(e) { return '/events/' + e.id + '/'; }
+  function upcomingEvents() {
+    return allEvents().filter(function (e) { return eventPlacement(e) === 'upcoming'; })
+      .sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+  }
+
+  function pastEvents() {
+    return allEvents().filter(function (e) { return eventPlacement(e) === 'past'; })
+      .sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+  }
+
+  function eventButton(e) {
+    var st = eventStatus(e);
+    if (st === 'scheduled' && eventPlacement(e) === 'upcoming') return e.registration || null;
+    if (st === 'postponed' || st === 'canceled') return e.statusLink || null;
+    return null;
+  }
+  function eventById(id) { return (M.events || []).filter(function (e) { return e.id === id; })[0] || null; }
+  function eventWhen(e) { return fmtDate(e.date, true) + (e.time ? ' at ' + e.time : ''); }
+
+  function linkedEventState(item) {
+    var e = item.eventId ? eventById(item.eventId) : null;
+    if (!e) return null;
+    var st = eventStatus(e);
+    if (st === 'postponed') return 'postponed';
+    if (st === 'canceled') return datePassed(e) ? 'closed' : 'canceled';
+    if (st === 'scheduled' && !datePassed(e)) return 'open';
+    return 'closed';
+  }
   function registrationClosed(item) {
-    var e = item.event;
-    return !!(e && (e.registrationUntil || e.date) < today());
+    var s = linkedEventState(item);
+    return !!s && s !== 'open';
   }
 
   function eventDetails(e, compact) {
@@ -113,7 +168,8 @@
   function initiativeCard(item, variant) {
     var full = variant === 'full';
     var closed = registrationClosed(item);
-    var status = closed ? 'closed' : item.status;
+    var linked = linkedEventState(item);
+    var status = linked === 'postponed' ? 'postponed' : linked === 'canceled' ? 'canceled' : closed ? 'closed' : item.status;
     var emphasis = status === 'active' || status === 'registration';
     return '' +
       '<article class="m-card' + (emphasis ? ' is-emphasis' : '') + '"' + (full ? ' id="' + esc(item.id) + '"' : '') + '>' +
@@ -123,9 +179,10 @@
           '<h3>' + esc(item.name) + '</h3>' +
           (full && item.detailsReplaceSummary ? '' : '<p>' + esc(item.summary) + '</p>') +
           (full ? paragraphs(item.details) : '') +
-          eventDetails(item.event, !full) +
+          eventDetails(item.eventId ? eventById(item.eventId) : null, !full) +
         '</div>' +
-        actions(learnMore(item.learnMore, item.learnMoreLabel, item.name) + (closed ? '' : action(item.action))) +
+        actions(learnMore(item.learnMore, item.learnMoreLabel, item.name) +
+          (item.action ? (closed ? '' : action(item.action)) : (item.eventId && eventById(item.eventId) ? action(eventButton(eventById(item.eventId))) : ''))) +
       '</article>';
   }
 
@@ -183,7 +240,13 @@
           '<h3>' + esc(name) + '</h3>' +
           (rows ? '<dl class="m-card-meta">' + rows + '</dl>' : '') +
         '</div>' +
+        actions(item.link && item.link.href ? externalLink(item.link) : '') +
       '</article>';
+  }
+
+  function externalLink(l) {
+    return '<a class="m-btn m-btn--secondary" href="' + esc(l.href) + '" target="_blank" rel="noopener" aria-label="' +
+      esc(l.label) + ' (opens in a new tab)">' + esc(l.label) + '<span class="ext-mark" aria-hidden="true">↗</span></a>';
   }
 
   function f4tEventCard(e) {
@@ -191,7 +254,7 @@
     return '' +
       '<article class="m-card' + (e.status === 'scheduled' ? ' is-emphasis' : '') + '" id="' + esc(e.id) + '">' +
         '<div class="m-card-top"><span class="m-card-kind">Distribution</span>' +
-          pillFor(e, e.status, null, M.eventStatuses, true) + '</div>' +
+          pillFor(e, eventStatus(e), null, M.eventStatuses, true) + '</div>' +
         '<div class="m-card-body">' +
           '<h3>' + esc(when) + '</h3>' +
           (e.location ? '<div class="m-card-loc"><span aria-hidden="true">📍</span>' + esc(e.location) + '</div>' : '') +
@@ -323,6 +386,145 @@
     renderF4tList(el, F.results, f4tResultCard, 'results');
   }
 
+  function currentFeatured() {
+    return upcomingEvents().filter(function (e) { return e.featured; });
+  }
+
+  function renderFeatured(el) {
+    var items = currentFeatured();
+    var section = el.closest('[data-m1u-hide-empty]');
+    if (section) section.hidden = !items.length;
+    if (!items.length) { el.innerHTML = ''; return; }
+    el.className = 'featured-list' + (items.length > 1 ? ' is-multi' : '');
+    var label = section && section.querySelector('.featured-label');
+    if (label) label.textContent = items.length > 1 ? 'Featured Programs' : 'Featured Program';
+    var more = section && section.querySelector('.featured-more');
+    if (more) more.hidden = false;
+    el.innerHTML = items.map(function (f) {
+      var when = eventWhen(f);
+      var st = eventStatus(f);
+      var btn = action(eventButton(f));
+      return '<article class="featured-item" id="' + esc(f.id) + '">' +
+        '<div class="featured-copy">' +
+          (st !== 'scheduled' ? statusPill(st, null, M.eventStatuses) : pillFor(f, null, null, null, true)) +
+          '<h3 class="featured-title">' + esc(f.title) + '</h3>' +
+          (f.statusNote && st !== 'scheduled' ? '<p class="featured-note">' + esc(f.statusNote) + '</p>' : '') +
+          (f.presenter ? '<p class="featured-presenter">' + esc(f.presenter) + '</p>' : '') +
+          '<ul class="featured-meta">' +
+            (when ? '<li><span aria-hidden="true">📅</span>' + esc(when) + '</li>' : '') +
+            (f.format ? '<li><span aria-hidden="true">💻</span>' + esc(f.format) + '</li>' : '') +
+          '</ul>' +
+        '</div>' +
+        (btn ? '<div class="featured-action">' + btn + '</div>' : '') +
+      '</article>';
+    }).join('');
+  }
+
+  function eventMeta(e) {
+    var st = eventStatus(e);
+    return metaRow(st === 'postponed' || st === 'canceled' ? 'Original date' : 'Date', fmtDate(e.date, true)) +
+      metaRow('Time', e.time) + metaRow('Format', e.format) + metaRow('Speakers', (e.speakers || []).join(' and '));
+  }
+
+  function upcomingCard(e) {
+    var st = eventStatus(e);
+    return '' +
+      '<article class="m-card event-card' + (st === 'scheduled' ? ' is-emphasis' : ' is-notice') + '" id="' + esc(e.id) + '">' +
+        '<div class="m-card-top"><span class="m-card-kind">' + esc(st === 'scheduled' ? 'Upcoming event' : 'Event update') + '</span>' +
+          pillFor(e, st, null, M.eventStatuses, true) + '</div>' +
+        '<div class="m-card-body">' +
+          '<h3>' + esc(e.title) + '</h3>' +
+          (e.presenter ? '<p class="event-presenter">' + esc(e.presenter) + '</p>' : '') +
+          (e.statusNote && st !== 'scheduled' ? '<p class="event-status-note">' + esc(e.statusNote) + '</p>' : '') +
+          (e.description ? '<p>' + esc(e.description) + '</p>' : '') +
+          '<dl class="m-card-meta m-card-event">' + eventMeta(e) + '</dl>' +
+        '</div>' +
+        actions(action(eventButton(e)) + (hasDetails(e) ? detailsButton(e) : '')) +
+      '</article>';
+  }
+
+  function detailsButton(e) {
+    return '<a class="m-btn m-btn--secondary" href="' + esc(eventUrl(e)) + '" aria-label="View Event Details: ' + esc(e.title) + '">View Event Details</a>';
+  }
+
+  function autoMovedNote() { return ''; }
+
+  function pastCard(e) {
+    var badge = eventStatus(e) === 'completed' ? pillFor(e, 'completed', null, M.eventStatuses, true) : pillFor(e, null, null, null, true);
+    return '' +
+      '<article class="m-card event-card is-past" id="' + esc(e.id) + '">' +
+        '<div class="m-card-top"><span class="m-card-kind">Past event</span>' + badge + '</div>' +
+        '<div class="m-card-body">' +
+          '<h3>' + esc(e.title) + '</h3>' +
+          '<p class="event-date"><span aria-hidden="true">📅</span>' + esc(fmtDate(e.date, true)) + '</p>' +
+          (e.summary || e.description ? '<p>' + esc(e.summary || e.description) + '</p>' : '') +
+          autoMovedNote(e) +
+        '</div>' +
+        actions(hasDetails(e) ? detailsButton(e) : '') +
+      '</article>';
+  }
+
+  function eventCard(e, past) { return past ? pastCard(e) : upcomingCard(e); }
+
+  function renderEventList(el, items, past, emptyText) {
+    if (!items.length) {
+      if (past) { setGroup(el, false); return; }
+      el.className = ''; el.innerHTML = '<p class="events-empty">' + esc(emptyText) + '</p>';
+      return;
+    }
+    setGroup(el, true);
+    grid(el, items.length, '2');
+    el.innerHTML = items.map(function (e) { return eventCard(e, past); }).join('');
+  }
+  function renderEventsUpcoming(el) { renderEventList(el, upcomingEvents(), false, 'New events are posted here when they are scheduled.'); }
+  function renderEventsPast(el) { renderEventList(el, pastEvents(), true); }
+
+  function renderEventDetail(el) {
+    var id = document.body.getAttribute('data-event-id') || new URLSearchParams(location.search).get('id');
+    var e = id ? eventById(id) : null;
+    if (!e || !visible(e, true) || eventPlacement(e) === 'hidden') {
+      el.innerHTML = '<header class="page-head"><div class="container"><nav class="page-crumb" aria-label="Breadcrumb"><a href="' + esc(link('/')) + '">Home</a> <span aria-hidden="true">/</span> <a href="' + esc(link('/events/')) + '">Events</a></nav>' +
+        '<h1>Event not found</h1><p>This event is not available. See all events on the <a href="' + esc(link('/events/')) + '">Events page</a>.</p></div></header>';
+      return;
+    }
+    document.title = e.title + ' – M1U';
+    var st = eventStatus(e), place = eventPlacement(e);
+    var kind = place === 'past' ? 'Past event' : st === 'scheduled' ? 'Upcoming event' : 'Event update';
+    var badge = place === 'past' ? (st === 'completed' ? pillFor(e, 'completed', null, M.eventStatuses, true) : pillFor(e, null, null, null, true))
+                                 : pillFor(e, st, null, M.eventStatuses, true);
+    var recap = recapVisible(e)
+      ? '<section class="event-section"><h2>Recap</h2>' + pillFor(e.recap, null, null, null, true) + paragraphs(e.recap.text) + '</section>' : '';
+    var photos = nonEmpty(e.photos)
+      ? '<section class="event-section"><h2>Photos</h2><div class="event-gallery">' + e.photos.map(function (ph) {
+          return '<figure><img src="' + esc(ph.src) + '" alt="' + esc(ph.alt || '') + '" loading="lazy">' + (ph.caption ? '<figcaption>' + esc(ph.caption) + '</figcaption>' : '') + '</figure>';
+        }).join('') + '</div></section>' : '';
+    var recording = e.recording && e.recording.href
+      ? '<section class="event-section"><h2>Recording</h2>' + externalLink({ label: e.recording.label || 'Watch the recording', href: e.recording.href }) + '</section>' : '';
+    var resources = nonEmpty(e.resources)
+      ? '<section class="event-section"><h2>Resources</h2><ul class="event-resources">' + e.resources.map(function (r) {
+          return '<li><a href="' + esc(r.href) + '" target="_blank" rel="noopener" aria-label="' + esc(r.label) + ' (opens in a new tab)">' + esc(r.label) + '<span class="ext-mark" aria-hidden="true">↗</span></a></li>';
+        }).join('') + '</ul></section>' : '';
+    var outcomes = nonEmpty(e.outcomes)
+      ? '<section class="event-section"><h2>Outcomes</h2><ul class="event-outcome-list">' + e.outcomes.map(function (o) { return '<li>' + esc(o) + '</li>'; }).join('') + '</ul></section>' : '';
+    var btn = action(eventButton(e));
+    el.innerHTML = '' +
+      '<header class="page-head"><div class="container">' +
+        '<nav class="page-crumb" aria-label="Breadcrumb"><a href="' + esc(link('/')) + '">Home</a> <span aria-hidden="true">/</span> <a href="' + esc(link('/events/')) + '">Events</a></nav>' +
+        '<span class="eyebrow">' + esc(kind) + '</span>' +
+        '<h1>' + esc(e.title) + '</h1>' +
+        (e.presenter ? '<p>' + esc(e.presenter) + '</p>' : '') +
+      '</div></header>' +
+      '<section class="section initiatives-area"><div class="container event-detail">' +
+        '<div class="event-detail-top">' + badge +
+          (e.statusNote && st !== 'scheduled' && st !== 'completed' ? '<p class="event-status-note">' + esc(e.statusNote) + '</p>' : '') + '</div>' +
+        '<dl class="m-card-meta m-card-event event-detail-meta">' + eventMeta(e) + '</dl>' +
+        (btn ? '<div class="event-detail-action">' + btn + '</div>' : '') +
+        (e.description ? '<section class="event-section"><h2>About this event</h2><p>' + esc(e.description) + '</p></section>' : '') +
+        recap + photos + recording + resources + outcomes +
+        '<p class="event-back"><a href="' + esc(link('/events/')) + '">← All events</a></p>' +
+      '</div></section>';
+  }
+
   function applyRequirements() {
     if (hasImpact()) return;
     document.querySelectorAll('[data-m1u-requires="impact"]').forEach(function (el) {
@@ -334,6 +536,7 @@
   var NAV = [
     { label: 'About',           href: '/#about' },
     { label: 'Initiatives',     href: '/initiatives/' },
+    { label: 'Events',          href: '/events/' },
     { label: 'Calls to Action', href: '/calls-to-action/' },
     { label: 'Our Impact',      href: '/impact/', requires: 'impact' },
     { label: 'Our People',      href: '/#people' }
@@ -431,7 +634,7 @@
           '</div>' +
           '<div class="f-col"><h4>Organization</h4><ul>' +
             li('About M1U', '/#about') + li('Initiatives', '/initiatives/') + li('Thabaat', '/#thabaat') +
-            li('Food4Thought', '/initiatives/food4thought/') + li('Calls to Action', '/calls-to-action/') +
+            li('Food4Thought', '/initiatives/food4thought/') + li('Events', '/events/') + li('Calls to Action', '/calls-to-action/') +
             (hasImpact() ? li('Our Impact', '/impact/') : '') +
             li('Our People', '/#people') + li('Imam Support & Education', '/initiatives/#imam-support') +
           '</ul></div>' +
@@ -456,7 +659,8 @@
   var RENDER = {
     nav: renderNav, footer: renderFooter,
     initiatives: renderInitiatives, 'calls-to-action': renderCalls,
-    impact: renderImpact, metrics: renderMetrics,
+    impact: renderImpact, metrics: renderMetrics, featured: renderFeatured,
+    'events-upcoming': renderEventsUpcoming, 'events-past': renderEventsPast, 'event-detail': renderEventDetail,
     'f4t-overview': renderF4tOverview, 'f4t-volunteer': renderF4tVolunteer,
     'f4t-events': renderF4tEvents, 'f4t-needs': renderF4tNeeds, 'f4t-results': renderF4tResults
   };

@@ -1,6 +1,7 @@
 window.M1U = {
   "site": {
     "name": "Mission 1 Ummah",
+    "url": "https://m1u.org",
     "email": "abdul@m1u.org",
     "bookingUrl": "https://book.m1u.org",
     "volunteerUrl": "https://form.jotform.com/262165355132048",
@@ -17,6 +18,8 @@ window.M1U = {
     "launching": "Launching",
     "registration": "Registration Open",
     "closed": "Registration Closed",
+    "postponed": "Event Postponed",
+    "canceled": "Event Canceled",
     "pilot": "Pilot",
     "development": "In Development",
     "completed": "Completed",
@@ -40,20 +43,9 @@ window.M1U = {
       "details": [
         "M1U and the North American Imams Fellow (NAIF) are presenting a free online financial literacy workshop for imams. Topics include budgeting, saving, debt management, halal investing, and retirement planning."
       ],
-      "event": {
-        "date": "2026-11-05",
-        "time": "1:30 PM ET",
-        "format": "Live on Zoom",
-        "speakers": [
-          "Ahmed R. Ali",
-          "Sami Ahmad"
-        ]
-      },
+      "eventId": "imam-financial-literacy-2026",
       "learnMore": "/initiatives/#imam-support",
-      "action": {
-        "label": "Register Free",
-        "href": "https://minar360.com/e/cb76dw"
-      }
+      "action": null
     },
     {
       "id": "scholarship-program",
@@ -148,6 +140,21 @@ window.M1U = {
       "currentStatus": "Food support continues through volunteers, donors, and community relationships.",
       "outcomes": null,
       "image": null
+    },
+    {
+      "id": "darul-uloom-new-york",
+      "org": "Darul Uloom New York",
+      "relationship": "partner",
+      "status": "active",
+      "contribution": "M1U is sponsoring several Hifz students at Darul Uloom New York, supporting their Quran memorization studies.",
+      "timeframe": "Through 2029",
+      "currentStatus": "The sponsorship is active.",
+      "outcomes": null,
+      "image": null,
+      "link": {
+        "label": "Visit Darul Uloom New York",
+        "href": "https://duny.us/"
+      }
     }
   ],
   "metrics": [],
@@ -159,10 +166,37 @@ window.M1U = {
       "logo": null
     }
   ],
+  "events": [
+    {
+      "id": "imam-financial-literacy-2026",
+      "title": "Free Financial Literacy Workshop for Imams",
+      "date": "2026-11-05",
+      "time": "1:30 PM ET",
+      "format": "Live on Zoom",
+      "presenter": "Presented by M1U and NAIF",
+      "speakers": [
+        "Ahmed R. Ali",
+        "Sami Ahmad"
+      ],
+      "description": "A free online financial literacy workshop for imams, presented by M1U and the North American Imams Fellow (NAIF). Topics include budgeting, saving, debt management, halal investing, and retirement planning.",
+      "status": "scheduled",
+      "featured": true,
+      "registration": {
+        "label": "Register Free",
+        "href": "https://minar360.com/e/cb76dw"
+      },
+      "summary": null,
+      "recap": null,
+      "photos": [],
+      "recording": null,
+      "resources": [],
+      "outcomes": []
+    }
+  ],
   "eventStatuses": {
     "scheduled": "Scheduled",
     "postponed": "Postponed",
-    "cancelled": "Cancelled",
+    "canceled": "Canceled",
     "completed": "Completed"
   },
   "food4thought": {

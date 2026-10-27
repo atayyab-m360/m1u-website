@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events – M1U</title>
+<meta name="description" content="Upcoming M1U events with registration details, and a record of past events.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<div data-m1u="nav"></div>
+
+<main id="main">
+  <header class="page-head">
+    <div class="container">
+      <nav class="page-crumb" aria-label="Breadcrumb"><a href="/">Home</a></nav>
+      <span class="eyebrow">Join Us</span>
+      <h1>Events</h1>
+      <p>Upcoming M1U events, with details and registration, and a record of the events M1U has held.</p>
+    </div>
+  </header>
+
+  <section class="section initiatives-area">
+    <div class="container">
+      <div class="group-block" aria-labelledby="upcoming-title">
+        <h2 class="group-label" id="upcoming-title">Upcoming Events</h2>
+        <div data-m1u="events-upcoming"></div>
+      </div>
+
+      <div class="group-block" data-m1u-group aria-labelledby="past-title">
+        <h2 class="group-label" id="past-title">Past Events <small>Most recent first</small></h2>
+        <div data-m1u="events-past"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div data-m1u="footer"></div>
+
+<script src="/assets/content.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>
