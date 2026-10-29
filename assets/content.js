@@ -127,6 +127,10 @@ window.M1U = {
       "timeframe": "October through December 2026",
       "contribution": "M1U secured designated funding to support Tanzil Seminary’s three-month pilot from October through December 2026.",
       "currentStatus": "The pilot is active.",
+      "link": {
+        "label": "Visit Tanzil Seminary",
+        "href": "https://tanzilseminary.org/"
+      },
       "outcomes": null,
       "image": null
     },
